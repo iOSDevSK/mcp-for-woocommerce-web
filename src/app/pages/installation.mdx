@@ -1,0 +1,77 @@
+Follow these steps to install and configure the MCP for WooCommerce plugin on your WordPress/WooCommerce site.
+
+## Prerequisites
+- WordPress 6.4 or later
+- PHP 8.0 or later  
+- WooCommerce plugin installed and activated
+- Composer (for development installations)
+
+## Installation Methods
+
+### Method 1: WordPress Admin (Recommended)
+
+1. Download the latest release from the <a href="https://github.com/iOSDevSK/mcp-for-woocommerce/releases" target="_blank">GitHub releases page</a>
+2. Go to **Plugins > Add Plugin > Upload Plugin**
+3. Upload the `.zip` file
+4. Click **Install Now**
+5. **Activate** the plugin
+
+### Method 2: Manual Installation
+
+1. Download the plugin ZIP file from the GitHub releases page
+2. Upload the ZIP file to `/wp-content/plugins/`
+3. Extract the ZIP file in the `/wp-content/plugins/` directory
+4. Go to **Plugins** in your WordPress admin
+5. **Activate** the MCP for WooCommerce plugin
+
+### Method 3: Development Installation
+For developers who want to contribute or customize:
+
+```bash
+cd /wp-content/plugins/
+git clone https://github.com/Automattic/wordpress-mcp.git woo-mcp
+cd woo-mcp
+composer install
+npm install & npm run build
+```
+
+## Initial Configuration
+After installation, you'll need to configure the plugin:
+
+1. Go to **Settings > MCP for WooCommerce** in your WordPress admin
+2. **Enable MCP** functionality
+3. Configure authentication settings
+4. Select which tools to enable
+
+## Verification
+To verify the installation worked:
+
+1. Check that the plugin appears in your **Plugins** list as active
+2. Visit **Settings > MCP for WooCommerce** to access configuration
+3. In **General Settings**, verify that **Enable MCP functionality** is turned on
+4. In the **Tools** tab, check that all required registered tools are enabled
+
+## Troubleshooting
+
+### Common Issues
+
+**Plugin won't activate:**
+- Check PHP version (8.0+ required)
+- Ensure WordPress version compatibility (6.4+)
+
+**Composer dependencies missing:**
+- Run `composer install` in the plugin directory
+
+**Permission errors:**
+- Check file permissions on plugin directory
+- Ensure web server can read/write plugin files
+
+**UI errors or missing interface elements:**
+- Run `npm install & npm run build` in the plugin directory to rebuild assets
+
+### Getting Help
+
+- Visit the <a href="https://github.com/iOSDevSK/mcp-for-woocommerce/issues" target="_blank">GitHub issues</a>
+- Join our community discussions
+
+Next: [Setup and Configuration →](setup)

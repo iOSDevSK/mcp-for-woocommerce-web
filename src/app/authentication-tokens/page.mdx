@@ -1,0 +1,108 @@
+import { TokenGenerator } from '@/components/TokenGenerator'
+import { TokenTable } from '@/components/TokenTable'
+
+export const metadata = {
+  title: 'Authentication Tokens',
+  description: 'Manage MCP authentication tokens for secure access to your WordPress content.',
+}
+
+<p className="font-display text-xl font-bold text-purple-500 mt-6 mb-4">Configuration</p>
+
+# Authentication Tokens
+
+## What are Authentication Tokens?
+
+MCP authentication tokens are secure, temporary credentials that allow external MCP clients to the WordPress MCP server
+
+These tokens are implemented using JWT (JSON Web Tokens), providing secure and stateless authentication.
+
+### How They Work
+
+- **Tokens are generated with your current user permissions and expire automatically**
+- **They provide access to MCP route endpoints for your WordPress content**
+- **Each token is unique and can be revoked individually if compromised**
+- **Tokens automatically inherit your user role and capabilities**
+
+## Security Best Practices
+
+<div className="bg-amber-50 border border-amber-200 rounded-lg p-4 my-6 dark:bg-amber-900/20 dark:border-amber-800">
+  <div className="flex items-start">
+    <svg className="h-5 w-5 text-amber-600 dark:text-amber-400 flex-shrink-0 mr-3" viewBox="0 0 20 20" fill="currentColor">
+      <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
+    </svg>
+    <div className="flex-1">
+      <div className="text-sm font-medium text-amber-800 dark:text-amber-200">Important Security Notes</div>
+      <div className="mt-1 text-sm text-amber-700 dark:text-amber-300">
+        <ul>
+          <li>Never share tokens in public repositories, emails, or chat messages</li>
+          <li>Use the shortest expiration time that meets your needs</li>
+          <li>Revoke tokens immediately if you suspect they may be compromised</li>
+          <li>Regularly review and clean up unused or expired tokens</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4 my-6">
+  <div className="flex items-start">
+    <svg className="h-5 w-5 text-red-600 dark:text-red-400 flex-shrink-0 mr-3" viewBox="0 0 20 20" fill="currentColor">
+      <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clipRule="evenodd" />
+    </svg>
+    <div className="flex-1">
+      <div className="text-sm font-medium text-red-800 dark:text-red-200">Never-Expiring Tokens</div>
+      <div className="mt-1 text-sm text-red-700 dark:text-red-300">
+        <ul>
+          <li>Should only be used in highly controlled environments</li>
+          <li>Must be manually revoked if compromised</li>
+          <li>Consider using long-lived tokens (24 hours) instead</li>
+          <li>Regularly audit and rotate never-expiring tokens</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 my-6">
+  <div className="flex items-start">
+    <svg className="h-5 w-5 text-blue-600 dark:text-blue-400 flex-shrink-0 mr-3" viewBox="0 0 20 20" fill="currentColor">
+      <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+    </svg>
+    <div className="flex-1">
+      <div className="text-sm font-medium text-blue-800 dark:text-blue-200">Important Note</div>
+      <div className="mt-1 text-sm text-blue-700 dark:text-blue-300">
+        These tokens are exclusively for MCP protocol access (stdio and streamable/HTTP). They will not work with WordPress REST API endpoints or other authentication systems.
+      </div>
+    </div>
+  </div>
+</div>
+
+*Remember: These tokens provide access based on your user permissions. If you can see it in WordPress, applications using your token can see it too.*
+
+---
+
+Generate tokens below to allow secure access to your WordPress content through the MCP protocol.
+
+## Token Limmit
+
+<div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 my-6">
+  <div className="flex items-start">
+    <svg className="h-5 w-5 text-blue-600 dark:text-blue-400 flex-shrink-0 mr-3" viewBox="0 0 20 20" fill="currentColor">
+      <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+    </svg>
+    <div className="flex-1">
+      <div className="text-sm font-medium text-blue-800 dark:text-blue-200">Token Limit</div>
+      <div className="mt-1 text-sm text-blue-700 dark:text-blue-300">
+        Maximum 10 active tokens allowed per user. When generating a new token at the limit, oldest revoked tokens will be automatically removed to make room. If no revoked tokens exist, new token generation will be blocked - you must revoke some existing active tokens first.
+      </div>
+    </div>
+  </div>
+</div>
+
+## Token Duration
+
+<TokenGenerator />
+
+## Your Active Tokens
+
+<TokenTable />

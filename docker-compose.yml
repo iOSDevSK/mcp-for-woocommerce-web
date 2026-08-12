@@ -1,0 +1,50 @@
+services:
+  mcpforwoocommerce-com:
+    image: nginx:alpine
+    container_name: mcpforwoocommerce-com
+    restart: unless-stopped
+    expose:
+      - "80"
+    networks:
+      coolify:
+        aliases:
+          - mcpforwoocommerce-com
+    volumes:
+      - /home/filip/sites/mcpforwoocommerce/out:/usr/share/nginx/html:ro
+      - /home/filip/sites/mcpforwoocommerce/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=coolify
+      - traefik.http.middlewares.gzip.compress=true
+      - traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https
+      # apex: mcpforwoocommerce.com
+      - traefik.http.routers.http-0-mcpwoo.entryPoints=http
+      - traefik.http.routers.http-0-mcpwoo.middlewares=redirect-to-https
+      - 'traefik.http.routers.http-0-mcpwoo.rule=Host(`mcpforwoocommerce.com`) && PathPrefix(`/`)'
+      - traefik.http.routers.http-0-mcpwoo.service=http-0-mcpwoo
+      - traefik.http.routers.https-0-mcpwoo.entryPoints=https
+      - traefik.http.routers.https-0-mcpwoo.middlewares=gzip
+      - 'traefik.http.routers.https-0-mcpwoo.rule=Host(`mcpforwoocommerce.com`) && PathPrefix(`/`)'
+      - traefik.http.routers.https-0-mcpwoo.service=https-0-mcpwoo
+      - traefik.http.routers.https-0-mcpwoo.tls=true
+      - traefik.http.routers.https-0-mcpwoo.tls.certresolver=letsencrypt
+      - traefik.http.services.http-0-mcpwoo.loadbalancer.server.port=80
+      - traefik.http.services.https-0-mcpwoo.loadbalancer.server.port=80
+      # www: www.mcpforwoocommerce.com
+      - traefik.http.routers.http-1-mcpwoo.entryPoints=http
+      - traefik.http.routers.http-1-mcpwoo.middlewares=redirect-to-https
+      - 'traefik.http.routers.http-1-mcpwoo.rule=Host(`www.mcpforwoocommerce.com`) && PathPrefix(`/`)'
+      - traefik.http.routers.http-1-mcpwoo.service=http-1-mcpwoo
+      - traefik.http.routers.https-1-mcpwoo.entryPoints=https
+      - traefik.http.routers.https-1-mcpwoo.middlewares=gzip
+      - 'traefik.http.routers.https-1-mcpwoo.rule=Host(`www.mcpforwoocommerce.com`) && PathPrefix(`/`)'
+      - traefik.http.routers.https-1-mcpwoo.service=https-1-mcpwoo
+      - traefik.http.routers.https-1-mcpwoo.tls=true
+      - traefik.http.routers.https-1-mcpwoo.tls.certresolver=letsencrypt
+      - traefik.http.services.http-1-mcpwoo.loadbalancer.server.port=80
+      - traefik.http.services.https-1-mcpwoo.loadbalancer.server.port=80
+
+networks:
+  coolify:
+    external: true
+    name: coolify

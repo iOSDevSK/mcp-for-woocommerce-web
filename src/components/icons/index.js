@@ -1,0 +1,5 @@
+export { CalendarIcon } from './CalendarIcon'
+export { TagIcon } from './TagIcon'  
+export { BugFixIcon } from './BugFixIcon'
+export { PlusIcon } from './PlusIcon'
+export { ArrowPathIcon } from './ArrowPathIcon'

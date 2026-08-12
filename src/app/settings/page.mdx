@@ -1,0 +1,37 @@
+import { SettingsToggles } from '@/components/SettingsToggles'
+
+export const metadata = {
+  title: 'Settings',
+  description: 'Configure your MCP for WooCommerce plugin settings and authentication options.',
+}
+
+<p className="font-display text-xl font-bold text-purple-500 mt-6 mb-4">Configuration</p>
+
+# MCP for WooCommerce Settings
+
+## General Settings
+<SettingsToggles />
+
+---
+
+## Authentication Settings
+
+### JWT Authentication Configuration
+
+## Configuration Options
+The settings page allows you to:
+
+- **Enable/Disable MCP functionality**: Control whether the MCP plugin is active
+- **JWT Authentication**: Configure secure authentication for MCP endpoints
+- **Access Control**: Determine if endpoints require authentication or operate in readonly mode
+
+## Security Considerations
+When JWT Authentication is enabled:
+- All MCP requests must include a valid JWT token
+- Provides secure access to WordPress content through MCP protocol
+- Recommended for production environments
+
+When JWT Authentication is disabled:
+- MCP endpoints are accessible without authentication
+- Operates in readonly mode only
+- Suitable for development or public read-only access

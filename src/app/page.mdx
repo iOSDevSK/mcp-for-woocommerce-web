@@ -1,0 +1,139 @@
+import { Guides } from '@/components/Guides'
+import { Resources } from '@/components/Resources'
+import { HeroPattern } from '@/components/HeroPattern'
+
+export const metadata = {
+  title: 'MCP for WooCommerce - AI Integration for WooCommerce',
+  description:
+    'Connect WooCommerce to Claude AI with MCP for WooCommerce plugin. Get secure, read-only access to product data, shipping methods, and store information via Model Context Protocol. Installation takes 5 minutes. Free WordPress plugin.',
+  alternates: {
+    canonical: '/',
+  },
+  openGraph: {
+    url: '/',
+    images: [
+      { url: '/opengraph-image', width: 1200, height: 630 },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['/opengraph-image'],
+  },
+}
+
+export const sections = [
+  { title: 'Getting Started', id: 'getting-started' },
+  { title: 'Frequently Asked Questions', id: 'frequently-asked-questions' },
+]
+
+<HeroPattern />
+
+# MCP for WooCommerce
+
+**MCP for WooCommerce** is a specialized WordPress plugin that connects WooCommerce stores to AI assistants like Claude via the Model Context Protocol (MCP). This **read-only plugin** provides secure access to public store data while protecting customer privacy.
+
+### What MCP for WooCommerce Does:
+- **Connects WooCommerce to AI** assistants in 5 minutes
+- **Read-only access** to product data, shipping info, and store details  
+- **Zero customer data exposure** - only public information accessible
+- **Free WordPress plugin** based on Automattic's wordpress-mcp
+- **Compatible with Claude AI** and other MCP-supported systems
+
+### Key Benefits:
+- ✅ **Quick Setup**: Install and configure in under 5 minutes
+- ✅ **Secure by Design**: Read-only access protects sensitive data
+- ✅ **AI-Ready**: Works with Claude, GPT, and other AI assistants
+- ✅ **WooCommerce Optimized**: Specialized for e-commerce needs
+- ✅ **Free & Open Source**: No licensing costs or restrictions {{ className: 'lead' }}
+
+<div className="not-prose mt-6 mb-16 flex gap-3">
+  <Button href="/overview" arrow="right">
+    <>Get Started</>
+  </Button>
+  <Button href="/installation" variant="outline">
+    <>Installation Guide</>
+  </Button>
+</div>
+
+## Getting started {{ anchor: false }}
+
+Install the MCP for WooCommerce plugin, configure your WordPress/WooCommerce setup, and connect it with AI assistants through the Model Context Protocol. Your AI can then access public product information, store details, and other publicly available content - all in read-only mode for enhanced security. {{ className: 'lead' }}
+
+<div className="not-prose">
+  <Button href="/setup" variant="text" arrow="right">
+    <>Setup Instructions</>
+  </Button>
+</div>
+
+<Guides />
+
+<Resources />
+
+## Frequently Asked Questions {{ anchor: false }}
+
+<div className="not-prose space-y-6 my-12">
+  <details className="group border border-zinc-200 dark:border-zinc-700 rounded-lg">
+    <summary className="flex cursor-pointer items-center justify-between p-6 text-lg font-semibold text-zinc-900 dark:text-white group-open:border-b group-open:border-zinc-200 dark:group-open:border-zinc-700">
+      What is MCP for WooCommerce and how does it work?
+      <svg className="h-5 w-5 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+      </svg>
+    </summary>
+    <div className="p-6 pt-0 text-zinc-600 dark:text-zinc-400">
+      <br/>
+      MCP for WooCommerce is a WordPress plugin that connects your WooCommerce store to AI assistants like Claude via the Model Context Protocol (MCP). It provides secure, read-only access to your store's public data, allowing AI to answer questions about products, shipping, and store information without accessing private customer data.
+    </div>
+  </details>
+
+  <details className="group border border-zinc-200 dark:border-zinc-700 rounded-lg">
+    <summary className="flex cursor-pointer items-center justify-between p-6 text-lg font-semibold text-zinc-900 dark:text-white group-open:border-b group-open:border-zinc-200 dark:group-open:border-zinc-700">
+      Is MCP for WooCommerce secure? What data can AI access?
+      <svg className="h-5 w-5 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+      </svg>
+    </summary>
+    <div className="p-6 pt-0 text-zinc-600 dark:text-zinc-400">
+      <br/>
+      Yes, MCP for WooCommerce is designed with security as a priority. It operates in read-only mode and only provides access to public store data such as product information, categories, shipping methods, and payment gateways. No customer information, sales data, or private details are accessible through the plugin.
+    </div>
+  </details>
+
+  <details className="group border border-zinc-200 dark:border-zinc-700 rounded-lg">
+    <summary className="flex cursor-pointer items-center justify-between p-6 text-lg font-semibold text-zinc-900 dark:text-white group-open:border-b group-open:border-zinc-200 dark:group-open:border-zinc-700">
+      How do I install and configure MCP for WooCommerce?
+      <svg className="h-5 w-5 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+      </svg>
+    </summary>
+    <div className="p-6 pt-0 text-zinc-600 dark:text-zinc-400">
+      <br/>
+      Installation is straightforward: download the plugin from GitHub, upload it to your WordPress site, and activate it. Configure JWT authentication if needed, then connect it to your AI assistant using the Model Context Protocol. Check our <a href="/installation" className="text-purple-600 hover:text-purple-700 dark:text-purple-400">installation guide</a> for detailed steps.
+    </div>
+  </details>
+
+  <details className="group border border-zinc-200 dark:border-zinc-700 rounded-lg">
+    <summary className="flex cursor-pointer items-center justify-between p-6 text-lg font-semibold text-zinc-900 dark:text-white group-open:border-b group-open:border-zinc-200 dark:group-open:border-zinc-700">
+      What's the difference between MCP for WooCommerce and the original WordPress MCP plugin?
+      <svg className="h-5 w-5 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+      </svg>
+    </summary>
+    <div className="p-6 pt-0 text-zinc-600 dark:text-zinc-400">
+      <br/>
+      MCP for WooCommerce is a specialized fork of Automattic's wordpress-mcp plugin, specifically optimized for WooCommerce stores. It includes enhanced product search tools, WooCommerce-specific data access, and features tailored for e-commerce AI assistants while maintaining compatibility with core WordPress functionality.
+    </div>
+  </details>
+
+  <details className="group border border-zinc-200 dark:border-zinc-700 rounded-lg">
+    <summary className="flex cursor-pointer items-center justify-between p-6 text-lg font-semibold text-zinc-900 dark:text-white group-open:border-b group-open:border-zinc-200 dark:group-open:border-zinc-700">
+      Can I use MCP for WooCommerce with other AI assistants besides Claude?
+      <svg className="h-5 w-5 transition-transform group-open:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+      </svg>
+    </summary>
+    <div className="p-6 pt-0 text-zinc-600 dark:text-zinc-400">
+      <br/>
+      Yes! MCP for WooCommerce uses the standard Model Context Protocol, making it compatible with any AI assistant that supports MCP. While optimized for Claude AI, it works with other MCP-compatible AI systems and can be integrated into various AI-powered applications.
+    </div>
+  </details>
+</div>

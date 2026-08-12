@@ -1,0 +1,84 @@
+import { ToolsTable } from '@/components/ToolsTable'
+
+The MCP for WooCommerce plugin provides read-only AI access to your WooCommerce store's public data and WordPress content. All 33 tools are available for AI integration.
+
+<ToolsTable />
+
+## Tool Configuration
+
+All 33 tools in the MCP for WooCommerce plugin have **read** functionality type:
+
+- **read**: Read-only operations, safe data access with no modification capabilities
+
+## Toggle Controls
+
+Use the toggle switches in the Status column to enable or disable individual tools. Disabled tools will not be available to MCP clients.
+
+- **Blue toggle (right)**: Tool is enabled and available
+- **Gray toggle (left)**: Tool is disabled and not available
+
+## Security Features
+
+- **Read-Only Access**: All tools provide safe, read-only access to data
+- **No Data Modification**: Content cannot be created, updated, or deleted
+- **Public Data Only**: Access limited to publicly available information
+- **No Customer Data**: No customer information, sales data, or private details are accessible
+- **Safe Analysis**: Perfect for content analysis and AI-powered insights
+
+## Best Practices
+
+### Search Workflow (Critical for WooCommerce)
+1. **Always use wc_products_search first** for finding products
+2. Use wc_get_product with the returned product ID for detailed information
+3. Only use wc_intelligent_search as a fallback if needed
+4. **Always include permalink links** when presenting products to users
+
+### Performance
+- Use specific product IDs from search results
+- Don't use hardcoded product IDs
+- Limit search results for better performance
+- Use pagination parameters for large content sets
+
+### AI Integration
+- Provide clear, specific queries
+- Use natural language descriptions
+- Combine tools for comprehensive information gathering
+- Follow the recommended workflow for product searches
+
+## Example AI Workflows
+
+### WooCommerce Product Search
+1. Search for products: Use **wc_products_search**
+2. Get detailed info: Use **wc_get_product** with returned ID
+3. Check variations: Use **wc_get_product_variations** if needed
+4. Always include product permalinks in responses
+
+### WordPress Content Analysis
+1. Browse content: Use **wordpress_posts_list** or **wordpress_pages_list**
+2. Get detailed info: Use **wordpress_posts_get** or **wordpress_pages_get** with specific IDs
+3. Analyze content for insights, SEO optimization, or content strategy
+
+### Store Configuration Analysis
+1. Check shipping: Use **wc_get_shipping_zones** and **wc_get_shipping_methods**
+2. Review payments: Use **wc_get_payment_gateways**
+3. Analyze taxes: Use **wc_get_tax_classes** and **wc_get_tax_rates**
+4. Monitor system: Use **wc_get_system_status**
+
+## Tool Categories Summary
+
+- **Product Search & Discovery**: 4 tools
+- **Product Information**: 2 tools  
+- **Product Variations**: 2 tools
+- **Categories & Tags**: 3 tools
+- **Product Attributes**: 4 tools
+- **Advanced Filtering**: 2 tools
+- **Product Reviews**: 2 tools
+- **Shipping Information**: 4 tools
+- **Tax Configuration**: 2 tools
+- **Payment Methods**: 2 tools
+- **System Information**: 2 tools
+- **WordPress Content**: 4 tools
+
+**Total: 33 tools** - All read-only, all secure, all ready for AI integration.
+
+Next: [Resources →](resources)
