@@ -28,7 +28,8 @@ container; the built `out/` directory is bind-mounted read-only.
 ssh agency
 cd ~/sites/mcpforwoocommerce
 # node is not installed on the host — build in a container:
-sudo docker run --rm -v "$PWD":/app -w /app node:20 sh -c "npm run build"
+# (drop `npm ci &&` only if node_modules is already in sync with the lockfile)
+sudo docker run --rm -v "$PWD":/app -w /app node:20 sh -c "npm ci && npm run build"
 # REQUIRED: `next build` deletes and recreates out/, which detaches the bind
 # mount — nginx then serves an empty directory until the container is recreated.
 sudo docker compose up -d --force-recreate
