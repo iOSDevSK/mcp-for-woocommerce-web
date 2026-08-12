@@ -28,8 +28,18 @@ container; the built `out/` directory is bind-mounted read-only.
 ssh agency
 cd ~/sites/mcpforwoocommerce
 # node is not installed on the host — build in a container:
-sudo docker run --rm -v "$PWD":/app -w /app node:20-alpine sh -c "npm ci && npm run build"
+sudo docker run --rm -v "$PWD":/app -w /app node:20 sh -c "npm run build"
+# REQUIRED: `next build` deletes and recreates out/, which detaches the bind
+# mount — nginx then serves an empty directory until the container is recreated.
+sudo docker compose up -d --force-recreate
 ```
 
-No container restart is needed — `out/` is bind-mounted. Purge the Cloudflare cache
-after a deploy if changes do not show up.
+Verify the container actually sees the new files, not just that the build passed:
+
+```bash
+sudo docker exec mcpforwoocommerce-com ls /usr/share/nginx/html
+```
+
+Cloudflare caches `robots.txt` and `sitemap.xml` (`max-age=14400`); purge the
+Cloudflare cache if a deploy does not show up. Page HTML is `cf-cache-status: DYNAMIC`
+and updates immediately.
