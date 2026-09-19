@@ -9,6 +9,7 @@ import { MinusIcon } from './icons/MinusIcon'
 import { ArrowPathIcon } from './icons/ArrowPathIcon'
 import { ChevronRightIcon } from './icons/ChevronRightIcon'
 import { ChevronDownIcon } from './icons/ChevronDownIcon'
+import { CHANGELOG_URL } from '@/lib/changelog'
 
 function ChangeTypeIcon({ type }) {
   const iconProps = "h-4 w-4"
@@ -156,37 +157,33 @@ function parseChangelog(text) {
   return versions.slice(0, 10)
 }
 
-export function Changelog() {
-  const [changelog, setChangelog] = useState([])
-  const [loading, setLoading] = useState(true)
+// initialText is fetched at build time (ChangelogFromGitHub), so the page ships
+// with the releases already in the HTML; the browser then refreshes it from GitHub.
+export function Changelog({ initialText = '' }) {
+  const [text, setText] = useState(initialText)
+  const [loading, setLoading] = useState(!initialText)
   const [error, setError] = useState(null)
-  const [expandedVersions, setExpandedVersions] = useState(new Set())
+  const [expandedVersions, setExpandedVersions] = useState(new Set([0]))
   const [expandedTickets, setExpandedTickets] = useState(new Set())
+  const changelog = parseChangelog(text)
 
   useEffect(() => {
     async function fetchChangelog() {
       try {
-        const response = await fetch('https://raw.githubusercontent.com/iOSDevSK/mcp-for-woocommerce/main/changelog.txt')
+        const response = await fetch(CHANGELOG_URL)
         if (!response.ok) {
           throw new Error('Failed to fetch changelog')
         }
-        const text = await response.text()
-        const parsedChangelog = parseChangelog(text)
-        setChangelog(parsedChangelog)
-        
-        // Expand the first (most recent) version by default
-        if (parsedChangelog.length > 0) {
-          setExpandedVersions(new Set([0]))
-        }
+        setText(await response.text())
       } catch (err) {
-        setError(err.message)
+        if (!initialText) setError(err.message)
       } finally {
         setLoading(false)
       }
     }
 
     fetchChangelog()
-  }, [])
+  }, [initialText])
 
   const toggleVersion = (index) => {
     const newExpanded = new Set(expandedVersions)
@@ -230,9 +227,9 @@ export function Changelog() {
             </svg>
           </div>
           <div className="ml-3">
-            <h3 className="text-sm font-medium text-red-800 dark:text-red-300">
+            <p className="text-sm font-medium text-red-800 dark:text-red-300">
               Error loading changelog
-            </h3>
+            </p>
             <div className="mt-2 text-sm text-red-700 dark:text-red-400">
               {error}
             </div>
@@ -261,9 +258,9 @@ export function Changelog() {
                     ) : (
                       <ChevronRightIcon className="h-5 w-5 text-gray-500" />
                     )}
-                    <h4 className="text-xl font-bold text-gray-900 dark:text-white">
+                    <h2 className="text-xl font-bold text-gray-900 dark:text-white">
                       Version {version.version}
-                    </h4>
+                    </h2>
                   </button>
                   <VersionBadge status={version.status} />
                 </div>
@@ -304,9 +301,9 @@ export function Changelog() {
                         <span className="font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-xs text-gray-600 dark:text-gray-400">
                           #{ticket.ticketNumber}
                         </span>
-                        <h4 className="font-semibold text-gray-900 dark:text-white text-left">
+                        <h3 className="font-semibold text-gray-900 dark:text-white text-left">
                           {ticket.description}
-                        </h4>
+                        </h3>
                       </button>
                       {ticket.date && isTicketExpanded && (
                         <div className="flex items-center space-x-1 text-sm text-gray-500 dark:text-gray-400 ml-6">
