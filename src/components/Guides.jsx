@@ -18,7 +18,7 @@ const guides = [
     description: 'Connect your WooCommerce store with Claude AI',
   },
   {
-    href: '/woocommerce-tools',
+    href: '/tools',
     name: 'WooCommerce Tools',
     description: 'AI-accessible WooCommerce product management',
   },
