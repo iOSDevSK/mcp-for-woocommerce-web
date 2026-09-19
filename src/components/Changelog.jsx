@@ -247,7 +247,7 @@ export function Changelog({ initialText = '' }) {
           <div key={`${version.version}-${index}`} className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm">
             {/* Version Header */}
             <div className={`px-6 py-4 bg-gray-50 dark:bg-gray-900/50 ${isExpanded ? 'border-b border-gray-200 dark:border-gray-700' : ''} ${index === 0 ? 'rounded-t-lg' : ''} ${!isExpanded ? 'rounded-lg' : 'rounded-t-lg'}`}>
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                 <div className="flex items-center space-x-3">
                   <button
                     onClick={() => toggleVersion(index)}
@@ -258,13 +258,13 @@ export function Changelog({ initialText = '' }) {
                     ) : (
                       <ChevronRightIcon className="h-5 w-5 text-gray-500" />
                     )}
-                    <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+                    <h2 className="not-prose text-xl font-bold text-gray-900 dark:text-white">
                       Version {version.version}
                     </h2>
                   </button>
                   <VersionBadge status={version.status} />
                 </div>
-                <div className="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
+                <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-gray-500 dark:text-gray-400">
                   <div className="flex items-center space-x-1">
                     <TagIcon className="h-4 w-4" />
                     <span>Release #{version.releaseNumber}</span>
@@ -301,7 +301,7 @@ export function Changelog({ initialText = '' }) {
                         <span className="font-mono bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded text-xs text-gray-600 dark:text-gray-400">
                           #{ticket.ticketNumber}
                         </span>
-                        <h3 className="font-semibold text-gray-900 dark:text-white text-left">
+                        <h3 className="not-prose font-semibold text-gray-900 dark:text-white text-left">
                           {ticket.description}
                         </h3>
                       </button>

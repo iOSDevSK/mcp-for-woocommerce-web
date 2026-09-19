@@ -223,7 +223,7 @@ export function ToolsTable() {
   return (
     <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
       <div className="mb-4 px-6 py-3 bg-gray-50 dark:bg-gray-700">
-        <h2 className="text-lg font-semibold text-gray-900 dark:text-white">Registered Tools</h2>
+        <h2 className="not-prose mt-10 mb-2 text-lg font-semibold text-gray-900 dark:text-white">Registered Tools</h2>
         <p className="text-sm text-gray-600 dark:text-gray-300">
           List of all {tools.length} registered tools in the system. Use the toggles to enable or disable individual tools.
         </p>
