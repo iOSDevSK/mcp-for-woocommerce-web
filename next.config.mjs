@@ -20,6 +20,9 @@ const nextConfig = {
     '/**/*': ['./src/app/**/*.mdx'],
   },
   devIndicators: false,
+  experimental: {
+    inlineCss: true,
+  },
   output: 'export',
   trailingSlash: true,
   images: {

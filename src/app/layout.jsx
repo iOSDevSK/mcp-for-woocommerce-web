@@ -62,11 +62,12 @@ export default async function RootLayout({ children }) {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     name: 'MCP for WooCommerce',
-    description: 'A specialized WordPress plugin that connects WooCommerce stores to Claude AI via Model Context Protocol (MCP). Provides read-only access to public store data for AI assistants.',
+    description: 'A free WordPress plugin that turns a WooCommerce store into an MCP server, so AI assistants such as Claude can read products, variations, categories, reviews, shipping, taxes and payment methods. All 33 tools are read-only.',
     url: 'https://mcpforwoocommerce.com',
     applicationCategory: 'BusinessApplication',
     operatingSystem: 'WordPress',
-    softwareVersion: '1.0.0',
+    softwareVersion: '1.2.4',
+    license: 'https://www.gnu.org/licenses/gpl-2.0.html',
     author: {
       '@type': 'Organization',
       name: 'MCP for WooCommerce Team',
@@ -77,7 +78,6 @@ export default async function RootLayout({ children }) {
       name: 'MCP for WooCommerce Team'
     },
     downloadUrl: 'https://github.com/iOSDevSK/mcp-for-woocommerce',
-    screenshot: 'https://mcpforwoocommerce.com/images/screenshot.png',
     offers: {
       '@type': 'Offer',
       price: '0',
@@ -87,73 +87,24 @@ export default async function RootLayout({ children }) {
       'WooCommerce AI integration',
       'Model Context Protocol support',
       'Read-only store data access',
-      'Claude AI compatibility',
-      'Product search and management',
-      'WordPress content access'
+      'Works with Claude, Cursor, VS Code and other MCP clients',
+      'Product search, variations and filtering',
+      'WordPress posts and pages'
     ]
   }
   const webSiteSchema = {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     url: 'https://mcpforwoocommerce.com/',
-    name: 'MCP for WooCommerce Documentation',
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: 'https://mcpforwoocommerce.com/?q={search_term_string}',
-      'query-input': 'required name=search_term_string',
-    },
+    name: 'MCP for WooCommerce Documentation'
   }
 
-  const faqSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: [
-      {
-        '@type': 'Question',
-        name: 'What is MCP for WooCommerce and how does it work?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'MCP for WooCommerce is a WordPress plugin that connects your WooCommerce store to AI assistants like Claude via the Model Context Protocol (MCP). It provides secure, read-only access to your store\'s public data, allowing AI to answer questions about products, shipping, and store information without accessing private customer data.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'Is MCP for WooCommerce secure? What data can AI access?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Yes, MCP for WooCommerce is designed with security as a priority. It operates in read-only mode and only provides access to public store data such as product information, categories, shipping methods, and payment gateways. No customer information, sales data, or private details are accessible through the plugin.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'How do I install and configure MCP for WooCommerce?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Installation is straightforward: download the plugin from GitHub, upload it to your WordPress site, and activate it. Configure JWT authentication if needed, then connect it to your AI assistant using the Model Context Protocol.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'What\'s the difference between MCP for WooCommerce and the original WordPress MCP plugin?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'MCP for WooCommerce is a specialized fork of Automattic\'s wordpress-mcp plugin, specifically optimized for WooCommerce stores. It includes enhanced product search tools, WooCommerce-specific data access, and features tailored for e-commerce AI assistants while maintaining compatibility with core WordPress functionality.'
-        }
-      },
-      {
-        '@type': 'Question',
-        name: 'Can I use MCP for WooCommerce with other AI assistants besides Claude?',
-        acceptedAnswer: {
-          '@type': 'Answer',
-          text: 'Yes! MCP for WooCommerce uses the standard Model Context Protocol, making it compatible with any AI assistant that supports MCP. While optimized for Claude AI, it works with other MCP-compatible AI systems and can be integrated into various AI-powered applications.'
-        }
-      }
-    ]
-  }
+
 
   return (
     <html lang="en" className="h-full" suppressHydrationWarning>
       <head>
+        <link rel="preconnect" href="https://umami.agentmods.dev" />
         {/* Umami analytics (self-hosted on umami.agentmods.dev) */}
         <script
           defer
@@ -173,10 +124,6 @@ export default async function RootLayout({ children }) {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteSchema) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
         />
       </head>
       <body className="flex min-h-full bg-white antialiased dark:bg-zinc-900" suppressHydrationWarning>

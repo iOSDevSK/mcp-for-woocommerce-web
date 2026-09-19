@@ -21,6 +21,38 @@ export const metadata = {
   },
 }
 
+export const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: 'What is MCP for WooCommerce and how does it work?',
+      acceptedAnswer: { '@type': 'Answer', text: "It is a WordPress plugin that turns your WooCommerce store into an MCP server. An AI assistant connected to it calls the plugin's tools to search products, open a product with its variations, and check shipping, tax and payment settings. Every one of those tools only reads." },
+    },
+    {
+      '@type': 'Question',
+      name: 'Is MCP for WooCommerce secure? What data can AI access?',
+      acceptedAnswer: { '@type': 'Answer', text: "The tools the plugin loads cover products, variations, categories, tags, attributes, reviews, shipping zones and methods, tax classes and rates, payment gateways, WooCommerce system status, and WordPress posts and pages. None of them writes. The code also contains tools for orders, customers and sales reports, but the plugin does not load them. One optional tool, off by default, can send read-only GET requests to your site's REST API; if you switch it on, the assistant can read whatever the token's user can read, so keep it off for administrator tokens." },
+    },
+    {
+      '@type': 'Question',
+      name: 'How do I install and configure MCP for WooCommerce?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Download the ZIP from GitHub, upload it under Plugins → Add Plugin → Upload Plugin and activate it. Then switch MCP on under Settings → MCP for WooCommerce, create a JWT token and add the site to your AI client. The installation guide goes through each step.' },
+    },
+    {
+      '@type': 'Question',
+      name: "What's the difference between MCP for WooCommerce and the original WordPress MCP plugin?",
+      acceptedAnswer: { '@type': 'Answer', text: "It started as a fork of Automattic's wordpress-mcp and was cut down to what a shop needs. It adds WooCommerce tools for product search, variations, attributes, reviews, shipping, taxes and payment methods, and it ships only tools that read. The WordPress side keeps posts and pages." },
+    },
+    {
+      '@type': 'Question',
+      name: 'Can I use MCP for WooCommerce with other AI assistants besides Claude?',
+      acceptedAnswer: { '@type': 'Answer', text: 'Yes. The plugin speaks the standard Model Context Protocol, so any MCP client can use it. The setup guide has ready configurations for Claude Desktop, Claude Code, Cursor, VS Code and MCP Inspector.' },
+    },
+  ],
+}
+
 export const sections = [
   { title: 'Getting Started', id: 'getting-started' },
   { title: 'Frequently Asked Questions', id: 'frequently-asked-questions' },
@@ -28,11 +60,13 @@ export const sections = [
 
 <HeroPattern />
 
+<script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+
 # MCP for WooCommerce
 
 **MCP for WooCommerce** is a free WordPress plugin that lets an AI assistant such as Claude read your WooCommerce store through the Model Context Protocol (MCP). The assistant can look up products, variations, categories, reviews, shipping, taxes and payment methods. It cannot change anything, and the tools it gets do not reach customers or orders.
 
-### What MCP for WooCommerce does
+## What MCP for WooCommerce does {{ anchor: false }}
 
 - Gives an assistant 33 tools, all of them read-only: 29 for WooCommerce data and 4 for WordPress posts and pages.
 - Works with Claude Desktop, Claude Code, Cursor, VS Code and any other client that speaks MCP.

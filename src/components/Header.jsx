@@ -64,7 +64,7 @@ export const Header = forwardRef(function Header({ className, ...props }, ref) {
       <Search />
       <div className="flex items-center gap-5 lg:hidden">
         <MobileNavigation />
-        <CloseButton as={Link} href="/" aria-label="Home">
+        <CloseButton as={Link} href="/" aria-label="MCP for WooCommerce home">
           <Logo />
         </CloseButton>
       </div>
@@ -72,7 +72,7 @@ export const Header = forwardRef(function Header({ className, ...props }, ref) {
         <nav className="hidden md:block">
           <ul role="list" className="flex items-center gap-8">
             <TopLevelNavItem href="/">Home</TopLevelNavItem>
-            <Menu as="div" className="relative">
+            <Menu as="li" className="relative">
               <MenuButton className="text-sm/5 text-zinc-600 transition hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-white flex items-center gap-1">
                 Links
                 <ChevronDownIcon className="w-4 h-4" />
