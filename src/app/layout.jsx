@@ -154,18 +154,18 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en" className="h-full" suppressHydrationWarning>
       <head>
-        {/* Google Analytics */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-3KW4L97NSJ"></script>
+        {/* Umami analytics (self-hosted on umami.agentmods.dev) */}
         <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-3KW4L97NSJ');
-            `,
-          }}
-        />
+          defer
+          src="https://umami.agentmods.dev/script.js"
+          data-website-id="2f73d523-57e5-4fb3-a802-5f88329b58ae"
+        ></script>
+        {/* Umami replays & heatmaps */}
+        <script
+          defer
+          src="https://umami.agentmods.dev/recorder.js"
+          data-website-id="2f73d523-57e5-4fb3-a802-5f88329b58ae"
+        ></script>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
