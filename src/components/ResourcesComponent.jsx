@@ -218,10 +218,10 @@ export default function ResourcesComponent() {
         <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">Resource Overview</h2>
 
         <div className="prose dark:prose-invert max-w-none">
-          <p>Resources provide structured, read-only access to contextual information for AI analysis. Unlike tools (which perform actions), resources are read-only and designed for providing guidance and context.</p>
+          <p>A resource is a document the assistant can read. A tool is something it calls to fetch data; a resource gives it background, here a guide on how to search your catalogue well.</p>
 
           <h3>What are Resources?</h3>
-          <p>Resources are structured data that provide AI assistants with contextual information and best practices for using your WooCommerce store effectively. They serve as knowledge bases that help AI understand optimal workflows and strategies.</p>
+          <p>The plugin ships one resource: a search guide that tells the assistant which tools to use in which order, and what to do when a search comes back empty.</p>
 
           <h3>Available Resources</h3>
           <ul>
@@ -229,15 +229,15 @@ export default function ResourcesComponent() {
           </ul>
 
           <h3>Resource Usage</h3>
-          <p>AI assistants automatically access resources for guidance when:</p>
+          <p>An assistant that reads the guide uses it when it is:</p>
           <ul>
-            <li>Performing product searches</li>
+            <li>searching for products</li>
             <li>Analyzing store data</li>
-            <li>Following best practices for tool usage</li>
-            <li>Implementing fallback strategies</li>
+            <li>choosing which tool to call</li>
+            <li>retrying a search that found nothing</li>
           </ul>
 
-          <p>Resources are static guides that provide consistent methodology for AI operations.</p>
+          <p>Whether and when a client reads a resource depends on the client.</p>
         </div>
       </div>
     </div>

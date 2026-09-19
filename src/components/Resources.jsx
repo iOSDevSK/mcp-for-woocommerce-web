@@ -15,7 +15,7 @@ const resources = [
     href: '/tools',
     name: 'Available Tools',
     description:
-      'Complete list of AI-accessible tools for WooCommerce and WordPress management.',
+      'The 33 read-only tools an assistant can call.',
     icon: CogIcon,
     pattern: {
       y: 16,
@@ -29,7 +29,7 @@ const resources = [
     href: '/resources',
     name: 'Resources',
     description:
-      'Available data resources for AI analysis and content management.',
+      'The data an assistant can read directly, such as the search guide.',
     icon: DocumentIcon,
     pattern: {
       y: -6,
@@ -43,7 +43,7 @@ const resources = [
     href: '/prompts',
     name: 'Prompts',
     description:
-      'Pre-configured AI prompts for common WooCommerce operations.',
+      'Ready-made prompts: none yet, and what to use instead.',
     icon: BoltIcon,
     pattern: {
       y: 32,
@@ -57,7 +57,7 @@ const resources = [
     href: '/mcp-protocol',
     name: 'MCP Protocol',
     description:
-      'Learn about Model Context Protocol integration and architecture.',
+      'How the Model Context Protocol works, in short.',
     icon: ShapesIcon,
     pattern: {
       y: 22,

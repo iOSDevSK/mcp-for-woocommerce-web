@@ -1,26 +1,18 @@
-Configure your MCP for WooCommerce plugin to work with Claude AI and other MCP clients.
+This page covers the plugin's settings and a ready configuration for each common MCP client.
 
 ## Plugin Settings
 Access the plugin settings at **Settings > MCP for WooCommerce** in your WordPress admin.
 
 ### Basic Settings
-**Enable MCP Functionality**
-- Toggle to activate/deactivate MCP features
-- Must be enabled for AI integration to work
+**Enable MCP functionality**
+- Turns the MCP endpoints on. Nothing else works until it is on.
 
-**Authentication Settings**
-- Configure JWT tokens for secure access
-- Set token expiration and refresh settings
-- Generate API keys for external access
+**Require JWT Authentication**
+- On by default. Every request then needs a valid token.
+- Tokens are created on the **Authentication Tokens** tab, where you choose how long each one lasts: 1 hour, 24 hours, 7 days or no expiry.
 
 ### Tool Configuration
-**Tool Security:**
-- **Read-Only Access**: All 33 tools are read-only for secure data access
-
-**Individual Tool States:**
-- Enable/disable specific tools
-- Customize which WooCommerce features are accessible
-- Control WordPress functionality exposure
+All 33 tools only read data. The **Tools** tab has a switch for each one; an assistant never sees a tool you have switched off. Leave on only what your use case needs.
 
 ## Client Configurations
 
@@ -33,7 +25,7 @@ Add your MCP for WooCommerce server directly to Claude Code using the HTTP trans
 claude mcp add --transport http woo-mcp https://your-site.com/wp-json/wp/v2/wpmcp/streamable --header "Authorization: Bearer your-jwt-token-here"
 ```
 
-For more information about Claude Code MCP configuration, see the Claude Code MCP documentation.
+Replace `your-site.com` and the token with your own values.
 
 ### Claude Desktop
 **Using JWT Token with mcp-wordpress-remote (Recommended)**
@@ -160,18 +152,18 @@ npx @modelcontextprotocol/inspector \
 - **Use Case**: Legacy compatibility, works with most MCP clients
 - **Proxy Required**: Yes (mcp-wordpress-remote)
 
-**Advantages:**
-- Compatible with all MCP clients
-- Secure JWT authentication
-- Enhanced features via proxy (WooCommerce, logging)
+**Why use it:**
+- Works with clients that can only start an MCP server as a local process
+- Uses the same JWT tokens as the HTTP transport
 
-**Example Tools Available:**
-- `wc_products_search` - Universal product search for ANY store type
-- `wc_get_product_variations` - Get all variations (colors, sizes, etc.) for a variable WooCommerce product
-- `wc_get_categories` - Get a specific product variation by ID
-- `wordpress_posts_get` - Get a single WordPress post by ID
-- `wordpress_pages_get` - Get a single WordPress page by ID
-- And many more...
+**Some of the tools:**
+- `wc_products_search` - product search that works for any kind of catalogue
+- `wc_get_product_variations` - all variations (colours, sizes and so on) of a variable product
+- `wc_get_categories` - all product categories
+- `wordpress_posts_get` - one WordPress post by ID
+- `wordpress_pages_get` - one WordPress page by ID
+
+The [tools reference](/tools) lists all 33.
 
 ### Streamable Transport
 - **Endpoint**: `/wp-json/wp/v2/wpmcp/streamable`
@@ -180,11 +172,10 @@ npx @modelcontextprotocol/inspector \
 - **Use Case**: Modern AI clients, direct integration
 - **Proxy Required**: No
 
-**Advantages:**
-- Direct connection (no proxy needed)
-- Standard JSON-RPC 2.0 protocol
-- Lower latency
-- Modern implementation
+**Why use it:**
+- The client talks to your site directly, with no proxy in between
+- Standard JSON-RPC 2.0
+- One hop less than the STDIO route
 
 **Example Methods:**
 - `tools/list` - List available tools
@@ -198,67 +189,62 @@ npx @modelcontextprotocol/inspector \
 
 ### Basic Connection Test
 
-1. Open Claude AI
-2. Try asking: "What products do I have in my WooCommerce store?"
-3. Claude should be able to access and list your products
+1. Open the AI client you connected
+2. Ask: "What products do I have in my WooCommerce store?"
+3. It should call the product search tool and list your products
 
-### Advanced Testing
+### More Questions to Try
 
-Test specific functionality:
-- "Create a new product category called 'Featured Items'"
-- "Show me my recent orders"
-- "What are my shipping methods?"
-- "Analyze my sales data"
+- "What sizes and colours does [product name] come in?"
+- "Which shipping methods do you offer, and to which countries?"
+- "Which payment methods can customers use?"
+- "Show me the products in the [category name] category"
+
+The plugin only reads, so a request to create or change something will fail. That is expected.
 
 ## Security Considerations
 
 ### Best Practices
 
-- **Use HTTPS**: Ensure your site uses SSL certificates
-- **Regular Updates**: Keep the plugin updated
-- **Monitor Access**: Review MCP usage logs regularly
-- **Limit Permissions**: Only enable tools you need
+- Serve the site over HTTPS; the token travels in every request
+- Keep the plugin updated
+- Switch off the tools you do not need
 
 ### Token Management
 
-- **Rotate Tokens**: Change JWT tokens regularly
-- **Secure Storage**: Store tokens securely
-- **Access Control**: Limit who can generate tokens
+- Replace long-lived tokens from time to time
+- Keep tokens out of shared documents and repositories
+- A token acts with the permissions of the user who created it, so create tokens from an account with no more rights than the assistant needs
 
 ## Troubleshooting
 
 ### Common Issues
 
-**JWT Token Expired**
-- Generate a new token from WordPress admin
-- Check token expiration time in settings
-- Ensure system clock is synchronized
+**JWT token expired**
+- Create a new token on the Authentication Tokens tab
+- Pick a longer duration if the old one ran out too soon
+- Check that the server clock is correct
 
-**Authentication Failed**
-- Verify JWT token is correctly copied
-- Ensure user has appropriate permissions
-- Check token expiration time
+**Authentication failed**
+- Check that the whole token was copied, with nothing missing at either end
+- Check that the user who created it can read what you ask for
+- Check that it has not expired
 
-**Connection Timeout**
-- Verify WordPress site is accessible
-- Check firewall settings
-- Ensure proper SSL certificate if using HTTPS
+**Connection timeout**
+- Check that the site loads in a browser
+- Check whether a firewall or security plugin blocks `/wp-json/`
+- Check that the SSL certificate is valid
 
 **Proxy Issues**
 - Update mcp-wordpress-remote to latest version:
 ```bash
 npm install -g @automattic/mcp-wordpress-remote@latest
 ```
-- Check proxy logs for error details
-- Verify environment variables are set correctly
+- Read the proxy's output for the actual error
+- Check that `WP_API_URL` and `JWT_TOKEN` are set
 
-### Security Best Practices
+### Token Durations
 
-- Use JWT tokens instead of application passwords when possible
-- Set appropriate expiration time for your use case (1-24 hours or never)
-- Revoke unused tokens promptly from the admin interface
-- Never commit tokens to version control systems
-- Use HTTPS for production environments
-- Regularly rotate tokens
+Pick the shortest duration that works: 1 hour or 24 hours for testing, 7 days for a trial run, and no expiry only for a server-to-server connection you control. Revoke a token as soon as you stop using it.
 
 Next: [AI Assistant →](/woocommerce-ai-assistant) | [Tools →](/tools)

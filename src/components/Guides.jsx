@@ -5,22 +5,22 @@ const guides = [
   {
     href: '/overview',
     name: 'Overview',
-    description: 'Learn about MCP for WooCommerce plugin and its capabilities',
+    description: 'What the plugin does and which data it reads',
   },
   {
     href: '/installation',
     name: 'Installation',
-    description: 'How to install and configure the plugin',
+    description: 'Install the plugin and switch it on',
   },
   {
     href: '/setup',
     name: 'Setup',
-    description: 'Connect your WooCommerce store with Claude AI',
+    description: 'Connect your store to Claude and other MCP clients',
   },
   {
     href: '/tools',
     name: 'WooCommerce Tools',
-    description: 'AI-accessible WooCommerce product management',
+    description: 'All 33 read-only tools, with what each one returns',
   },
 ]
 

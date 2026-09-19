@@ -19,19 +19,18 @@ export const metadata = {
 ### JWT Authentication Configuration
 
 ## Configuration Options
-The settings page allows you to:
+The Settings tab has two switches:
 
-- **Enable/Disable MCP functionality**: Control whether the MCP plugin is active
-- **JWT Authentication**: Configure secure authentication for MCP endpoints
-- **Access Control**: Determine if endpoints require authentication or operate in readonly mode
+- **Enable MCP functionality** turns the MCP endpoints on or off
+- **Require JWT Authentication** decides whether every request needs a token
 
 ## Security Considerations
-When JWT Authentication is enabled:
-- All MCP requests must include a valid JWT token
-- Provides secure access to WordPress content through MCP protocol
-- Recommended for production environments
+With JWT authentication on, which is the default:
+- Every MCP request needs a valid token
+- The assistant can read what the token's user can read
+- Use this on a live store
 
-When JWT Authentication is disabled:
-- MCP endpoints are accessible without authentication
-- Operates in readonly mode only
-- Suitable for development or public read-only access
+With JWT authentication off:
+- Anyone who knows the endpoint can call the tools without a token
+- The tools still only read, and they still skip customers and orders
+- Fine for local development, or for a public assistant that only needs the catalogue

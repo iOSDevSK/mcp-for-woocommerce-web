@@ -1,10 +1,10 @@
-Follow these steps to install and configure the MCP for WooCommerce plugin on your WordPress/WooCommerce site.
+This page covers installing MCP for WooCommerce on a WordPress site with WooCommerce and checking that it works.
 
 ## Prerequisites
-- WordPress 6.4 or later
-- PHP 8.0 or later  
-- WooCommerce plugin installed and activated
-- Composer (for development installations)
+- WordPress 6.4 or later (tested up to 7.0)
+- PHP 8.0 or later
+- WooCommerce installed and active
+- Composer and Node.js, only if you want to rebuild the plugin from source
 
 ## Installation Methods
 
@@ -18,60 +18,64 @@ Follow these steps to install and configure the MCP for WooCommerce plugin on yo
 
 ### Method 2: Manual Installation
 
-1. Download the plugin ZIP file from the GitHub releases page
-2. Upload the ZIP file to `/wp-content/plugins/`
-3. Extract the ZIP file in the `/wp-content/plugins/` directory
+1. Download the plugin ZIP from the GitHub releases page
+2. Upload it to `/wp-content/plugins/`
+3. Extract it there
 4. Go to **Plugins** in your WordPress admin
-5. **Activate** the MCP for WooCommerce plugin
+5. **Activate** MCP for WooCommerce
 
-### Method 3: Development Installation
-For developers who want to contribute or customize:
+### Method 3: From the Source Repository
+If you want to change the plugin or contribute to it:
 
 ```bash
 cd /wp-content/plugins/
-git clone https://github.com/Automattic/wordpress-mcp.git woo-mcp
-cd woo-mcp
+git clone https://github.com/iOSDevSK/mcp-for-woocommerce.git
+```
+
+The repository includes the `vendor/` and `build/` folders, so the plugin runs as cloned. Rebuild only after you change PHP dependencies or the admin scripts:
+
+```bash
+cd mcp-for-woocommerce
 composer install
-npm install & npm run build
+npm install && npm run build
 ```
 
 ## Initial Configuration
-After installation, you'll need to configure the plugin:
+Once the plugin is active:
 
 1. Go to **Settings > MCP for WooCommerce** in your WordPress admin
-2. **Enable MCP** functionality
-3. Configure authentication settings
-4. Select which tools to enable
+2. On the **Settings** tab, switch on **Enable MCP functionality**
+3. Decide whether to keep **Require JWT Authentication** on (it is on by default)
+4. On the **Tools** tab, switch off any tool you do not want the assistant to use
 
 ## Verification
-To verify the installation worked:
+To check the installation:
 
-1. Check that the plugin appears in your **Plugins** list as active
-2. Visit **Settings > MCP for WooCommerce** to access configuration
-3. In **General Settings**, verify that **Enable MCP functionality** is turned on
-4. In the **Tools** tab, check that all required registered tools are enabled
+1. The plugin shows as active in your **Plugins** list
+2. **Settings > MCP for WooCommerce** opens
+3. On the **Settings** tab, **Enable MCP functionality** is on
+4. On the **Tools** tab, the tools you need are on
 
 ## Troubleshooting
 
 ### Common Issues
 
-**Plugin won't activate:**
-- Check PHP version (8.0+ required)
-- Ensure WordPress version compatibility (6.4+)
+**The plugin won't activate:**
+- Check that the server runs PHP 8.0 or later
+- Check that WordPress is 6.4 or later
 
-**Composer dependencies missing:**
+**Composer dependencies are missing:**
 - Run `composer install` in the plugin directory
 
 **Permission errors:**
-- Check file permissions on plugin directory
-- Ensure web server can read/write plugin files
+- Check the file permissions of the plugin directory
+- Make sure the web server can read the plugin files
 
-**UI errors or missing interface elements:**
-- Run `npm install & npm run build` in the plugin directory to rebuild assets
+**The settings screen is broken or incomplete:**
+- Run `npm install && npm run build` in the plugin directory to rebuild the admin scripts
 
 ### Getting Help
 
-- Visit the <a href="https://github.com/iOSDevSK/mcp-for-woocommerce/issues" target="_blank">GitHub issues</a>
-- Join our community discussions
+Open an issue on <a href="https://github.com/iOSDevSK/mcp-for-woocommerce/issues" target="_blank">GitHub</a>.
 
 Next: [Setup and Configuration →](/setup)

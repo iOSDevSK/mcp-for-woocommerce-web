@@ -12,16 +12,14 @@ export const metadata = {
 
 ## What are Authentication Tokens?
 
-MCP authentication tokens are secure, temporary credentials that allow external MCP clients to the WordPress MCP server
-
-These tokens are implemented using JWT (JSON Web Tokens), providing secure and stateless authentication.
+An authentication token lets an MCP client, such as Claude Desktop or Webtalkbot, connect to your site. Tokens are JWTs (JSON Web Tokens), so the site can check them without storing a session.
 
 ### How They Work
 
-- **Tokens are generated with your current user permissions and expire automatically**
-- **They provide access to MCP route endpoints for your WordPress content**
-- **Each token is unique and can be revoked individually if compromised**
-- **Tokens automatically inherit your user role and capabilities**
+- A token carries the role and permissions of the user who created it
+- It works only on the MCP endpoints
+- It expires after the duration you picked, unless you chose no expiry
+- You can revoke any single token without touching the others
 
 ## Security Best Practices
 
@@ -31,7 +29,7 @@ These tokens are implemented using JWT (JSON Web Tokens), providing secure and s
       <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
     </svg>
     <div className="flex-1">
-      <div className="text-sm font-medium text-amber-800 dark:text-amber-200">Important Security Notes</div>
+      <div className="text-sm font-medium text-amber-800 dark:text-amber-200">Security notes</div>
       <div className="mt-1 text-sm text-amber-700 dark:text-amber-300">
         <ul>
           <li>Never share tokens in public repositories, emails, or chat messages</li>
@@ -53,10 +51,10 @@ These tokens are implemented using JWT (JSON Web Tokens), providing secure and s
       <div className="text-sm font-medium text-red-800 dark:text-red-200">Never-Expiring Tokens</div>
       <div className="mt-1 text-sm text-red-700 dark:text-red-300">
         <ul>
-          <li>Should only be used in highly controlled environments</li>
-          <li>Must be manually revoked if compromised</li>
-          <li>Consider using long-lived tokens (24 hours) instead</li>
-          <li>Regularly audit and rotate never-expiring tokens</li>
+          <li>Use them only for a connection you fully control, such as your own server</li>
+          <li>They stay valid until you revoke them, so revoke one the moment it may have leaked</li>
+          <li>For anything else, a 24-hour or 7-day token is safer</li>
+          <li>Check the list now and then and revoke the ones you no longer use</li>
         </ul>
       </div>
     </div>
@@ -69,7 +67,7 @@ These tokens are implemented using JWT (JSON Web Tokens), providing secure and s
       <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
     </svg>
     <div className="flex-1">
-      <div className="text-sm font-medium text-blue-800 dark:text-blue-200">Important Note</div>
+      <div className="text-sm font-medium text-blue-800 dark:text-blue-200">Note</div>
       <div className="mt-1 text-sm text-blue-700 dark:text-blue-300">
         These tokens are exclusively for MCP protocol access (stdio and streamable/HTTP). They will not work with WordPress REST API endpoints or other authentication systems.
       </div>
@@ -77,13 +75,11 @@ These tokens are implemented using JWT (JSON Web Tokens), providing secure and s
   </div>
 </div>
 
-*Remember: These tokens provide access based on your user permissions. If you can see it in WordPress, applications using your token can see it too.*
+*A token sees what you see: anything your WordPress account can read, an application holding your token can read too.*
 
 ---
 
-Generate tokens below to allow secure access to your WordPress content through the MCP protocol.
-
-## Token Limmit
+## Token Limit
 
 <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 my-6">
   <div className="flex items-start">
@@ -93,7 +89,7 @@ Generate tokens below to allow secure access to your WordPress content through t
     <div className="flex-1">
       <div className="text-sm font-medium text-blue-800 dark:text-blue-200">Token Limit</div>
       <div className="mt-1 text-sm text-blue-700 dark:text-blue-300">
-        Maximum 10 active tokens allowed per user. When generating a new token at the limit, oldest revoked tokens will be automatically removed to make room. If no revoked tokens exist, new token generation will be blocked - you must revoke some existing active tokens first.
+        Each user can have up to 10 active tokens. At the limit, creating a new one first removes your oldest revoked tokens. If you have none revoked, the new token is refused until you revoke one.
       </div>
     </div>
   </div>

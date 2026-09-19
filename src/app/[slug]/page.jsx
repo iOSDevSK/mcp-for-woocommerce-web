@@ -24,7 +24,7 @@ const sections = [
       {
         slug: "woocommerce-ai-assistant",
         title: "AI Assistant",
-        description: "Build intelligent WooCommerce shopping assistants with Claude AI. Access product data, handle customer queries, and automate e-commerce support."
+        description: "Build a WooCommerce shopping assistant with Webtalkbot and MCP for WooCommerce. It answers product, price and stock questions from live store data."
       }
     ]
   },
@@ -40,7 +40,7 @@ const sections = [
       {
         slug: "tools",
         title: "Tools",
-        description: "Complete MCP for WooCommerce tools reference: product search, category browsing, order management, and WooCommerce data access methods for AI assistants."
+        description: "All 33 MCP for WooCommerce tools: product search, variations, categories, reviews, shipping, taxes and payment data. Every tool is read-only."
       },
       {
         slug: "resources",
@@ -50,7 +50,7 @@ const sections = [
       {
         slug: "prompts",
         title: "Prompts",
-        description: "Pre-built AI prompts for WooCommerce: customer support templates, product recommendations, and e-commerce automation workflows."
+        description: "MCP for WooCommerce ships no ready-made prompts yet. What to ask the assistant instead, using the plugin's 33 read-only tools."
       }
     ]
   }

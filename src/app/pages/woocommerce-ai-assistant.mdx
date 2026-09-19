@@ -1,7 +1,7 @@
-Transform your WooCommerce store with an intelligent shopping assistant that helps customers find products and increases sales. Here's how to create one using Webtalkbot: {{ className: 'lead' }}
+A shopping assistant on your store answers customers' questions about products, prices and stock. This guide builds one with Webtalkbot, which reads your catalogue through MCP for WooCommerce. {{ className: 'lead' }}
 
 ## Prerequisites {{ anchor: 'prerequisites' }}
-Before creating your AI assistant, ensure you have:
+You need three things first:
 
 1. **Install MCP for WooCommerce Plugin**: Download and install the plugin from [GitHub releases](https://github.com/iOSDevSK/mcp-for-woocommerce/releases)
 2. **Generate JWT Token**: Create a JWT token in your WordPress admin (**Settings > MCP for WooCommerce**)
@@ -17,54 +17,45 @@ In your Webtalkbot dashboard:
 Fill in the required configuration:
 
 **Chatbot Name**
-- Choose a descriptive name (e.g., "Shop Assistant", "Product Helper")
-- This will be displayed to your customers
+- Pick a name customers will see, for example "Shop Assistant"
 
 **Website URL** 
-- Enter your complete WooCommerce store URL
-- Include the full URL with `https://` (e.g., `https://your-shop.com`)
+- Your store's full address, including `https://` (for example `https://your-shop.com`)
 
 **Woo-MCP JWT Token**
-- Paste the JWT token from your WordPress admin
-- Found in **Settings > MCP for WooCommerce** after plugin installation
-- Maximum 250 characters
+- The JWT token from **Settings > MCP for WooCommerce**, Authentication Tokens tab
+- The field accepts up to 250 characters
 
 ## Step 3: Deploy Your Shopping Assistant {{ anchor: 'deploy-assistant' }}
 
-Once created, your AI agent provides:
+Once it is created, the assistant can:
 
-**Smart Product Discovery**
-- Natural language product searches
-- Intelligent recommendations based on customer needs
-- Real-time inventory and pricing information
+**Help customers find products**
+- Search the catalogue with the customer's own words
+- Suggest products that match what they describe
+- Give current prices and stock, read live from the store
 
-**Customer Support**
-- Answers questions about policies, shipping, returns
-- Provides detailed product information
-- Guides customers through the shopping process
+**Answer support questions**
+- Shipping, returns and other policies, from your pages
+- Details of a specific product
+- Where to find something in the shop
 
 ## Step 4: Integration Options {{ anchor: 'integration-options' }}
 Deploy your AI assistant using multiple methods:
 
-**Chat Bubble Widget**
-- Floating chat interface on your store pages
-- Perfect for product pages and checkout
+**Chat bubble**
+- A chat window floating on your store pages, for example on product pages and at checkout
 
-**Direct Link**
-- Standalone assistant for customer support
-- Can be used in marketing campaigns
+**Direct link**
+- The assistant on a page of its own, which you can link from emails or campaigns
 
 ## Best Practices {{ anchor: 'best-practices' }}
-- **Keep product data updated**: The AI learns from your product descriptions
-- **Test regularly**: Try common customer questions to optimize performance
-- **Strategic placement**: Add chat widgets to high-traffic pages
-- **Monitor usage**: Each interaction uses credits, plan accordingly
-
-Your WooCommerce AI assistant will help reduce cart abandonment, increase customer satisfaction, and boost sales through intelligent product recommendations.
+- Keep product descriptions current; the assistant answers from them
+- Ask it the questions your customers ask most, and check the answers
+- Put the chat bubble on the pages with the most visitors
+- Every conversation uses Webtalkbot credits, so keep an eye on your balance
 
 ## Additional Resources {{ anchor: 'additional-resources' }}
-For more detailed information about creating WooCommerce AI agents, visit the <a href="https://webtalkbot.com/docs/" target="_blank" rel="noopener noreferrer">Webtalkbot documentation</a>.
-
-If you encounter any issues during setup or have questions about the process, please contact support through the <a href="https://webtalkbot.com/contact/" target="_blank" rel="noopener noreferrer">contact form</a>.
+The <a href="https://webtalkbot.com/docs/" target="_blank" rel="noopener noreferrer">Webtalkbot documentation</a> covers the chatbot side in more detail. For problems with the setup, use their <a href="https://webtalkbot.com/contact/" target="_blank" rel="noopener noreferrer">contact form</a>.
 
 Next: [Tools →](/tools)

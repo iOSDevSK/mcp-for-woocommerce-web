@@ -9,7 +9,7 @@ export function SettingsToggles() {
         <ToggleSwitch
           enabled={true}
           label="Enable MCP functionality"
-          description="Toggle to enable or disable the MCP plugin functionality."
+          description="Turns the MCP endpoints on or off."
           onChange={(enabled) => console.log('MCP functionality:', enabled)}
         />
       </div>
@@ -36,7 +36,7 @@ export function SettingsToggles() {
         <ToggleSwitch
           enabled={true}
           label="Require JWT Authentication"
-          description="When enabled, all MCP requests must include a valid JWT token. When disabled, MCP endpoints are accessible without authentication (readonly mode only)."
+          description="When on, every MCP request needs a valid JWT token. When off, anyone who knows the endpoint can call the tools; they still only read."
           onChange={(enabled) => console.log('JWT Authentication:', enabled)}
         />
       </div>

@@ -1,84 +1,76 @@
 import { ToolsTable } from '@/components/ToolsTable'
 
-The MCP for WooCommerce plugin provides read-only AI access to your WooCommerce store's public data and WordPress content. All 33 tools are available for AI integration.
+The plugin gives an AI assistant 33 tools. All of them only read: 29 cover WooCommerce data and 4 cover WordPress posts and pages. The table lists every one of them.
 
 <ToolsTable />
 
 ## Tool Configuration
 
-All 33 tools in the MCP for WooCommerce plugin have **read** functionality type:
-
-- **read**: Read-only operations, safe data access with no modification capabilities
+Every tool has the functionality type **read**: it returns data and never changes anything.
 
 ## Toggle Controls
 
-Use the toggle switches in the Status column to enable or disable individual tools. Disabled tools will not be available to MCP clients.
+The **Tools** tab in the plugin settings has a switch next to each tool. A switched-off tool disappears from the list the assistant sees.
 
-- **Blue toggle (right)**: Tool is enabled and available
-- **Gray toggle (left)**: Tool is disabled and not available
+- **Blue, switch to the right**: the tool is on
+- **Gray, switch to the left**: the tool is off
 
-## Security Features
+## What the Tools Can and Cannot Reach
 
-- **Read-Only Access**: All tools provide safe, read-only access to data
-- **No Data Modification**: Content cannot be created, updated, or deleted
-- **Public Data Only**: Access limited to publicly available information
-- **No Customer Data**: No customer information, sales data, or private details are accessible
-- **Safe Analysis**: Perfect for content analysis and AI-powered insights
+- They read products, variations, categories, tags, attributes, reviews, shipping, taxes, payment gateways, system status, and WordPress posts and pages
+- They cannot create, edit or delete anything
+- None of them returns customers, orders or sales figures. The codebase has tools for those, but the plugin does not load them.
 
 ## Best Practices
 
-### Search Workflow (Critical for WooCommerce)
-1. **Always use wc_products_search first** for finding products
-2. Use wc_get_product with the returned product ID for detailed information
-3. Only use wc_intelligent_search as a fallback if needed
-4. **Always include permalink links** when presenting products to users
+### Product Search
+1. Start with **wc_products_search**
+2. Open a result with **wc_get_product** and the ID the search returned
+3. Use **wc_intelligent_search** only when the first search comes back empty
+4. Give the customer the product's permalink with every answer
 
 ### Performance
-- Use specific product IDs from search results
-- Don't use hardcoded product IDs
-- Limit search results for better performance
-- Use pagination parameters for large content sets
+- Work with the IDs a search returns instead of hard-coded ones
+- Ask for fewer results when you only need a few
+- Page through large lists instead of loading them at once
 
-### AI Integration
-- Provide clear, specific queries
-- Use natural language descriptions
-- Combine tools for comprehensive information gathering
-- Follow the recommended workflow for product searches
+### Asking the Assistant
+- A specific question gets a better answer than a broad one
+- Plain language is fine; the assistant picks the tools
+- For a full answer it may combine several tools, for example a product and its variations
 
-## Example AI Workflows
+## Example Workflows
 
-### WooCommerce Product Search
-1. Search for products: Use **wc_products_search**
-2. Get detailed info: Use **wc_get_product** with returned ID
-3. Check variations: Use **wc_get_product_variations** if needed
-4. Always include product permalinks in responses
+### Finding a Product
+1. Search with **wc_products_search**
+2. Get the details with **wc_get_product** and the returned ID
+3. If it is a variable product, list the options with **wc_get_product_variations**
+4. Answer with the product's permalink
 
-### WordPress Content Analysis
-1. Browse content: Use **wordpress_posts_list** or **wordpress_pages_list**
-2. Get detailed info: Use **wordpress_posts_get** or **wordpress_pages_get** with specific IDs
-3. Analyze content for insights, SEO optimization, or content strategy
+### Reviewing WordPress Content
+1. List content with **wordpress_posts_list** or **wordpress_pages_list**
+2. Open an item with **wordpress_posts_get** or **wordpress_pages_get**
+3. Ask for an SEO or content review of what came back
 
-### Store Configuration Analysis
-1. Check shipping: Use **wc_get_shipping_zones** and **wc_get_shipping_methods**
-2. Review payments: Use **wc_get_payment_gateways**
-3. Analyze taxes: Use **wc_get_tax_classes** and **wc_get_tax_rates**
-4. Monitor system: Use **wc_get_system_status**
+### Checking the Store Setup
+1. Shipping: **wc_get_shipping_zones** and **wc_get_shipping_methods**
+2. Payments: **wc_get_payment_gateways**
+3. Taxes: **wc_get_tax_classes** and **wc_get_tax_rates**
+4. System: **wc_get_system_status**
 
-## Tool Categories Summary
+## Tools by Group
 
-- **Product Search & Discovery**: 4 tools
-- **Product Information**: 2 tools  
-- **Product Variations**: 2 tools
-- **Categories & Tags**: 3 tools
-- **Product Attributes**: 4 tools
-- **Advanced Filtering**: 2 tools
-- **Product Reviews**: 2 tools
-- **Shipping Information**: 4 tools
-- **Tax Configuration**: 2 tools
-- **Payment Methods**: 2 tools
-- **System Information**: 2 tools
-- **WordPress Content**: 4 tools
+- **Products** (search, details, variations): 4 tools
+- **Search helpers** (intelligent search, intent analysis, filtering by category, brand and attributes): 8 tools
+- **Categories and tags**: 2 tools
+- **Attributes**: 3 tools
+- **Reviews**: 2 tools
+- **Shipping**: 4 tools
+- **Taxes**: 2 tools
+- **Payment gateways**: 2 tools
+- **System status**: 2 tools
+- **WordPress posts and pages**: 4 tools
 
-**Total: 33 tools** - All read-only, all secure, all ready for AI integration.
+**33 tools in total**, all read-only.
 
 Next: [Resources →](/resources)
