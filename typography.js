@@ -5,9 +5,9 @@ export default {
         css: {
           '--tw-prose-body': theme('colors.zinc.700'),
           '--tw-prose-headings': theme('colors.zinc.900'),
-          '--tw-prose-links': theme('colors.purple.500'),
-          '--tw-prose-links-hover': theme('colors.purple.600'),
-          '--tw-prose-links-underline': theme('colors.purple.500 / 0.3'),
+          '--tw-prose-links': theme('colors.purple.600'),
+          '--tw-prose-links-hover': theme('colors.purple.700'),
+          '--tw-prose-links-underline': theme('colors.purple.600 / 0.3'),
           '--tw-prose-bold': theme('colors.zinc.900'),
           '--tw-prose-counters': theme('colors.zinc.500'),
           '--tw-prose-bullets': theme('colors.zinc.300'),

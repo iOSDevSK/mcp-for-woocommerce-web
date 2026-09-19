@@ -111,12 +111,13 @@ export default async function RootLayout({ children }) {
           src="https://umami.agentmods.dev/script.js"
           data-website-id="2f73d523-57e5-4fb3-a802-5f88329b58ae"
         ></script>
-        {/* Umami replays & heatmaps */}
+        {/* Umami replays & heatmaps: loaded once the page is idle, so the
+            58 KB recorder does not delay the first paint */}
         <script
-          defer
-          src="https://umami.agentmods.dev/recorder.js"
-          data-website-id="2f73d523-57e5-4fb3-a802-5f88329b58ae"
-        ></script>
+          dangerouslySetInnerHTML={{
+            __html: `addEventListener('load',function(){(window.requestIdleCallback||setTimeout)(function(){var s=document.createElement('script');s.src='https://umami.agentmods.dev/recorder.js';s.dataset.websiteId='2f73d523-57e5-4fb3-a802-5f88329b58ae';document.head.appendChild(s)})})`,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
