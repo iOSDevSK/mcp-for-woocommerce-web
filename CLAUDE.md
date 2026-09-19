@@ -16,6 +16,7 @@ The domain appears in these places — keep them in sync:
 - `src/app/[slug]/page.jsx` — `BreadcrumbList` JSON-LD
 - `src/app/sitemap.js` — `baseUrl` (this generates the live `/sitemap.xml`)
 - `public/robots.txt` — header comment + `Sitemap:` line
+- `public/llms.txt` — every page URL (update it when a page is added or renamed)
 
 `public/sitemap.xml` is dead: the App Router `sitemap.js` route wins at build time.
 

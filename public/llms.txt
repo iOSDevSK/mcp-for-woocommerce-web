@@ -1,0 +1,31 @@
+# MCP for WooCommerce
+
+> Free, open-source WordPress plugin (GPL-2.0-or-later) that turns a WooCommerce store into an MCP (Model Context Protocol) server. AI clients such as Claude Desktop, Claude Code, Cursor and VS Code get 33 read-only tools: 29 for WooCommerce data (products, variations, categories, tags, attributes, reviews, shipping, taxes, payment gateways, system status) and 4 for WordPress posts and pages. No tool creates, edits or deletes anything, and the loaded tools do not reach customers or orders.
+
+- Connection: Streamable HTTP at `/wp-json/wp/v2/wpmcp/streamable` with a JWT token (required by default), or STDIO through a small local proxy.
+- Requirements: WordPress 6.4+, PHP 8.0+, WooCommerce active.
+- Source and releases: https://github.com/iOSDevSK/mcp-for-woocommerce
+- It is a fork of Automattic's wordpress-mcp, cut down to what a shop needs.
+
+## Getting started
+
+- [Overview](https://mcpforwoocommerce.com/overview/): what the plugin does and which data it reads
+- [Installation](https://mcpforwoocommerce.com/installation/): install from the GitHub release ZIP, switch MCP on, check the tools
+- [Setup](https://mcpforwoocommerce.com/setup/): configurations for Claude Code, Claude Desktop, Cursor, VS Code and MCP Inspector
+- [WooCommerce AI chatbot](https://mcpforwoocommerce.com/woocommerce-ai-assistant/): a shopping assistant built with Webtalkbot on live store data
+
+## Configuration
+
+- [Settings](https://mcpforwoocommerce.com/settings/): enable MCP, require JWT authentication, switch tools on or off
+- [Authentication tokens](https://mcpforwoocommerce.com/authentication-tokens/): create and revoke the JWT tokens MCP clients use
+
+## Reference
+
+- [Tools](https://mcpforwoocommerce.com/tools/): all 33 read-only tools and what each returns
+- [Resources](https://mcpforwoocommerce.com/resources/): the search guide resource
+- [Prompts](https://mcpforwoocommerce.com/prompts/): no ready-made prompts yet, and what to ask instead
+- [MCP protocol](https://mcpforwoocommerce.com/mcp-protocol/): how the Model Context Protocol works
+
+## Optional
+
+- [Changelog](https://mcpforwoocommerce.com/changelog/): every release, read from GitHub

@@ -1,50 +1,22 @@
-# Robots.txt for MCP for WooCommerce Documentation
-# https://mcpforwoocommerce.com
+# robots.txt for https://mcpforwoocommerce.com
+# Documentation for the MCP for WooCommerce WordPress plugin.
+# Search engines and AI assistants are welcome to read and cite every page.
 
 User-agent: *
 Allow: /
 
-# Allow search engines to crawl all content
-Allow: /overview/
-Allow: /installation/
-Allow: /setup/
-Allow: /woocommerce-ai-assistant/
-Allow: /settings/
-Allow: /authentication-tokens/
-Allow: /mcp-protocol/
-Allow: /tools/
-Allow: /resources/
-Allow: /prompts/
-Allow: /changelog/
-
-# Disallow admin and build directories
-Disallow: /_next/
-Disallow: /api/
-Disallow: /admin/
-Disallow: /.well-known/
-Disallow: /node_modules/
-
-# Sitemap location
-Sitemap: https://mcpforwoocommerce.com/sitemap.xml
-
-# Crawl delay for respectful crawling
-Crawl-delay: 1
-
-# Special directives for AI crawlers
+# AI crawlers and assistants, named explicitly
 User-agent: GPTBot
-Allow: /
-
+User-agent: OAI-SearchBot
 User-agent: ChatGPT-User
-Allow: /
-
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
 User-agent: CCBot
 Allow: /
 
-User-agent: Claude-Web
-Allow: /
-
-User-agent: anthropic-ai
-Allow: /
-
-User-agent: Applebot
-Allow: /
+Sitemap: https://mcpforwoocommerce.com/sitemap.xml

@@ -8,11 +8,11 @@ import '@/styles/tailwind.css'
 export const metadata = {
   metadataBase: new URL('https://mcpforwoocommerce.com'),
   title: {
-    template: '%s - MCP for WooCommerce Documentation',
-    default: 'MCP for WooCommerce Documentation',
+    template: '%s | MCP for WooCommerce',
+    default: 'WooCommerce MCP Server for Claude – Free Plugin',
   },
-  description: 'Complete documentation for MCP for WooCommerce plugin - Connect your WooCommerce store to Claude AI via Model Context Protocol in 5 minutes. Build intelligent shopping assistants, automate customer support, enhance e-commerce with AI. Free WordPress plugin with read-only security.',
-  keywords: 'WooCommerce, AI, Claude AI, Model Context Protocol, MCP, WordPress plugin, e-commerce automation, AI shopping assistant, customer support automation, WooCommerce AI integration',
+  description: 'Free WordPress plugin that turns WooCommerce into an MCP server: Claude, Cursor and other AI clients get 33 read-only tools for your store data.',
+  keywords: 'WooCommerce MCP, WooCommerce MCP server, MCP for WooCommerce, WooCommerce Claude, WooCommerce AI chatbot, Model Context Protocol, WordPress plugin',
   authors: [{ name: 'MCP for WooCommerce Team' }],
   creator: 'MCP for WooCommerce',
   publisher: 'MCP for WooCommerce',
@@ -31,8 +31,8 @@ export const metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    title: 'MCP for WooCommerce - WooCommerce AI Assistant Plugin',
-    description: 'Connect your WooCommerce store to Claude AI via Model Context Protocol. Build intelligent shopping assistants and automate e-commerce tasks.',
+    title: 'WooCommerce MCP Server for Claude – Free Plugin',
+    description: 'Free WordPress plugin that turns WooCommerce into an MCP server: Claude, Cursor and other AI clients get 33 read-only tools for your store data.',
     siteName: 'MCP for WooCommerce Documentation',
     url: 'https://mcpforwoocommerce.com/',
     images: [
@@ -41,8 +41,8 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'MCP for WooCommerce - WooCommerce AI Assistant Plugin',
-    description: 'Connect your WooCommerce store to Claude AI via Model Context Protocol.',
+    title: 'WooCommerce MCP Server for Claude – Free Plugin',
+    description: 'Free WordPress plugin that turns WooCommerce into an MCP server: Claude, Cursor and other AI clients get 33 read-only tools for your store data.',
     images: ['https://mcpforwoocommerce.com/opengraph-image'],
   },
 }

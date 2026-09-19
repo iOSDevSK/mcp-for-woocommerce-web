@@ -9,22 +9,26 @@ const sections = [
       {
         slug: "overview",
         title: "Overview",
-        description: "Discover MCP for WooCommerce features: WooCommerce AI integration, Model Context Protocol support, and secure read-only data access for intelligent e-commerce automation."
+        seoTitle: "WooCommerce MCP Server: Features and the Data It Reads",
+        description: "What the plugin does: 33 read-only tools that let Claude and other MCP clients read your products, reviews, shipping, taxes and payment methods."
       },
       {
         slug: "installation",
         title: "Installation",
-        description: "Step-by-step guide to install MCP for WooCommerce plugin in WordPress. Download, configure, and activate WooCommerce AI integration in minutes."
+        seoTitle: "Install the WooCommerce MCP Plugin",
+        description: "Install MCP for WooCommerce from the GitHub release ZIP, switch MCP on in its settings and check that the tools you need are enabled."
       },
       {
         slug: "setup",
         title: "Setup",
-        description: "Configure MCP for WooCommerce authentication tokens and connect your WooCommerce store to Claude AI. Complete setup guide with security best practices."
+        seoTitle: "Connect WooCommerce to Claude Code, Claude Desktop & Cursor",
+        description: "Connect your WooCommerce store to Claude Code, Claude Desktop, Cursor or VS Code: plugin settings, a JWT token and a ready configuration for each client."
       },
       {
         slug: "woocommerce-ai-assistant",
         title: "AI Assistant",
-        description: "Build a WooCommerce shopping assistant with Webtalkbot and MCP for WooCommerce. It answers product, price and stock questions from live store data."
+        seoTitle: "WooCommerce AI Chatbot with Live Product Data",
+        description: "Build a WooCommerce AI chatbot with Webtalkbot and MCP for WooCommerce. It answers product, price and stock questions from live store data."
       }
     ]
   },
@@ -35,21 +39,25 @@ const sections = [
       {
         slug: "mcp-protocol",
         title: "MCP Protocol",
-        description: "Learn Model Context Protocol fundamentals: secure AI-to-application communication standard enabling Claude AI to access WooCommerce data safely."
+        seoTitle: "What Is MCP (Model Context Protocol)? WooCommerce Guide",
+        description: "What the Model Context Protocol is, how an MCP client talks to a server, and how MCP for WooCommerce uses it to give AI assistants store data."
       },
       {
         slug: "tools",
         title: "Tools",
+        seoTitle: "WooCommerce MCP Tools: All 33 Read-Only Tools",
         description: "All 33 MCP for WooCommerce tools: product search, variations, categories, reviews, shipping, taxes and payment data. Every tool is read-only."
       },
       {
         slug: "resources",
         title: "Resources",
-        description: "Available WooCommerce data resources: products, categories, shipping methods, payment gateways, and WordPress content accessible via MCP."
+        seoTitle: "WooCommerce MCP Resources",
+        description: "The read-only MCP resource the plugin exposes: a search guide an AI assistant can read directly before it searches your store."
       },
       {
         slug: "prompts",
         title: "Prompts",
+        seoTitle: "WooCommerce MCP Prompts: What to Ask Instead",
         description: "MCP for WooCommerce ships no ready-made prompts yet. What to ask the assistant instead, using the plugin's 33 read-only tools."
       }
     ]
@@ -92,13 +100,13 @@ export async function generateMetadata({ params }) {
   let page = await getPage((await params).slug);
 
   return {
-    title: page?.title,
+    title: { absolute: page?.seoTitle ?? page?.title },
     description: page?.description,
     alternates: {
       canonical: `/${page?.slug ?? (await params).slug}/`,
     },
     openGraph: {
-      title: page?.title,
+      title: page?.seoTitle,
       description: page?.description,
       url: `/${page?.slug ?? (await params).slug}/`,
       type: 'article',
@@ -109,7 +117,7 @@ export async function generateMetadata({ params }) {
     },
     twitter: {
       card: 'summary_large_image',
-      title: page?.title,
+      title: page?.seoTitle,
       description: page?.description,
       images: ['/opengraph-image'],
     },
@@ -149,12 +157,6 @@ export default async function Page({ params }) {
               {
                 '@type': 'ListItem',
                 position: 2,
-                name: page.section.title,
-                item: 'https://mcpforwoocommerce.com/',
-              },
-              {
-                '@type': 'ListItem',
-                position: 3,
                 name: page.title,
                 item: `https://mcpforwoocommerce.com/${slug}/`,
               },
