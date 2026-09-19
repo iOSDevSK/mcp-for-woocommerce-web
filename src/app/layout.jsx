@@ -105,17 +105,11 @@ export default async function RootLayout({ children }) {
     <html lang="en" className="h-full" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://umami.agentmods.dev" />
-        {/* Umami analytics (self-hosted on umami.agentmods.dev) */}
-        <script
-          defer
-          src="https://umami.agentmods.dev/script.js"
-          data-website-id="2f73d523-57e5-4fb3-a802-5f88329b58ae"
-        ></script>
-        {/* Umami replays & heatmaps: loaded once the page is idle, so the
-            58 KB recorder does not delay the first paint */}
+        {/* Umami analytics (self-hosted on umami.agentmods.dev), with replays and
+            heatmaps. Both load after the page, so they never delay the first paint. */}
         <script
           dangerouslySetInnerHTML={{
-            __html: `addEventListener('load',function(){(window.requestIdleCallback||setTimeout)(function(){var s=document.createElement('script');s.src='https://umami.agentmods.dev/recorder.js';s.dataset.websiteId='2f73d523-57e5-4fb3-a802-5f88329b58ae';document.head.appendChild(s)})})`,
+            __html: `addEventListener('load',function(){['script.js','recorder.js'].forEach(function(f,i){setTimeout(function(){var s=document.createElement('script');s.src='https://umami.agentmods.dev/'+f;s.dataset.websiteId='2f73d523-57e5-4fb3-a802-5f88329b58ae';document.head.appendChild(s)},500+i*1000)})})`,
           }}
         />
         <script
