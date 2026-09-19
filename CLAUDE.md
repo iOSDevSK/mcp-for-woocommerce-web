@@ -19,6 +19,19 @@ The domain appears in these places — keep them in sync:
 
 `public/sitemap.xml` is dead: the App Router `sitemap.js` route wins at build time.
 
+## PageSpeed (100 on every page, mobile and desktop)
+
+- `npm run build` runs `postbuild` → `scripts/inline-css.mjs`: inlines the stylesheet
+  into every page and requests the `/_next/` chunks only after the first paint.
+  Do not switch back to `experimental.inlineCss` (it copies the CSS into the RSC
+  payload and doubles the HTML).
+- **Never add a `loading.jsx`** anywhere under `src/app`. In the static export it wraps
+  the page in Suspense, so the content stays hidden until React reveals it (LCP −300 ms+).
+- Scripts rendered by React in `layout.jsx` `<head>` must stay in the HTML; load
+  third-party scripts (Umami) from the inline loader there, not with `<script src>`.
+- nginx sends `Cache-Control: no-transform` on pages so Cloudflare does not inject its
+  Web Analytics beacon; `absolute_redirect off` keeps trailing-slash redirects on https.
+
 ## Deploy
 
 Static Next.js export (`output: 'export'`, `trailingSlash: true`) served by an nginx
