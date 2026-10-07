@@ -32,10 +32,13 @@ npm run build
 Production is `https://mcpforwoocommerce.com`: the static `out/` directory is served by an
 nginx container on the `agency` server, behind Traefik and Cloudflare.
 
+The server copy is not a git clone; sync the source from a local checkout first:
+
 ```bash
+rsync -ac --delete --exclude='.git' --exclude='node_modules' --exclude='out' \
+  --exclude='.next' --exclude='.claude' --exclude='._*' ./ agency:sites/mcpforwoocommerce/
 ssh agency
 cd ~/sites/mcpforwoocommerce
-git pull
 # node is not installed on the host — build in a container
 sudo docker run --rm -v "$PWD":/app -w /app node:20 sh -c "npm ci && npm run build"
 # required: `next build` recreates out/, which detaches the bind mount
