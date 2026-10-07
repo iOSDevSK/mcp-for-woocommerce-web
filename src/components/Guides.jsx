@@ -20,7 +20,7 @@ const guides = [
   {
     href: '/tools',
     name: 'WooCommerce Tools',
-    description: 'All 33 read-only tools, with what each one returns',
+    description: 'All 31 read-only tools, with what each one returns',
   },
 ]
 

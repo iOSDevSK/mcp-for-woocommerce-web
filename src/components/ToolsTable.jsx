@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { ToolToggleSwitch } from './ToolToggleSwitch'
 
 const toolsData = [
-  // WooCommerce Tools (29 tools)
+  // WooCommerce Tools (27 tools)
   {
     name: 'wc_products_search',
     description: 'PRIMARY PRODUCT SEARCH TOOL: Universal product search for ANY store type (electronics, food, pets, pharmacy, automotive, etc.). CRITICAL: This is the main search tool - use this FIRST for all product searches. When searching for specific products by name, ALWAYS use this tool FIRST to get the correct product ID, then use other tools with that ID. DO NOT use hardcoded product IDs. IMPORTANT: Each product includes a "permalink" field with the direct link to the product page - ALWAYS include these links when presenting products to users.',
@@ -164,18 +164,6 @@ const toolsData = [
   {
     name: 'wc_get_payment_gateway',
     description: 'Get details about a specific WooCommerce payment gateway by ID',
-    type: 'read',
-    enabled: true
-  },
-  {
-    name: 'wc_get_system_status',
-    description: 'Get WooCommerce system status information (versions, settings, environment)',
-    type: 'read',
-    enabled: true
-  },
-  {
-    name: 'wc_get_system_tools',
-    description: 'Get available WooCommerce system tools and utilities',
     type: 'read',
     enabled: true
   },

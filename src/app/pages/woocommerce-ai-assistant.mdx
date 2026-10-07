@@ -4,7 +4,7 @@ A shopping assistant on your store answers customers' questions about products, 
 You need three things first:
 
 1. **Install MCP for WooCommerce Plugin**: Download and install the plugin from [GitHub releases](https://github.com/iOSDevSK/mcp-for-woocommerce/releases)
-2. **Generate JWT Token**: Create a JWT token in your WordPress admin (**Settings > MCP for WooCommerce**)
+2. **Copy Your MCP Endpoint URL**: Switch MCP on under **Settings > MCP for WooCommerce** and copy the endpoint URL from the **Access** card
 3. **Webtalkbot Account**: Sign up at <a href="https://webtalkbot.com" target="_blank" rel="noopener noreferrer">webtalkbot.com</a>
 
 ## Step 1: Choose WooCommerce Data Source {{ anchor: 'choose-data-source' }}
@@ -22,9 +22,9 @@ Fill in the required configuration:
 **Website URL** 
 - Your store's full address, including `https://` (for example `https://your-shop.com`)
 
-**Woo-MCP JWT Token**
-- The JWT token from **Settings > MCP for WooCommerce**, Authentication Tokens tab
-- The field accepts up to 250 characters
+**Your MCP endpoint**
+- Give the AI chatbot platform your MCP endpoint URL, for example `https://your-shop.com/wp-json/wp/v2/wpmcp/streamable`
+- No token is needed: the endpoint is public and read-only, so the chatbot sees only what a shop visitor can see
 
 ## Step 3: Deploy Your Shopping Assistant {{ anchor: 'deploy-assistant' }}
 

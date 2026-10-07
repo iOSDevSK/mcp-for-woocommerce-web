@@ -2,7 +2,7 @@ import { SettingsToggles } from '@/components/SettingsToggles'
 
 export const metadata = {
   title: { absolute: 'WooCommerce MCP Plugin Settings' },
-  description: "Settings of the MCP for WooCommerce plugin: switch MCP on, require JWT authentication and choose which tools the assistant can use.",
+  description: "Settings of the MCP for WooCommerce plugin: switch MCP on, copy the public read-only endpoint URL and choose which tools the assistant can use.",
   alternates: { canonical: '/settings/' },
 }
 
@@ -15,23 +15,25 @@ export const metadata = {
 
 ---
 
-## Authentication Settings
-
-### JWT Authentication Configuration
-
 ## Configuration Options
-The Settings tab has two switches:
+The settings screen at **Settings > MCP for WooCommerce** has five tabs:
 
-- **Enable MCP functionality** turns the MCP endpoints on or off
-- **Require JWT Authentication** decides whether every request needs a token
+- **Settings**: the **Enable MCP functionality** switch, and the **Access** card with your MCP endpoint URL
+- **Documentation**: how to connect a client
+- **Tools**: a switch for each of the 31 tools
+- **Resources**: the search guide resource
+- **Prompts**: the prompt list, currently empty
 
-## Security Considerations
-With JWT authentication on, which is the default:
-- Every MCP request needs a valid token
-- The assistant can read what the token's user can read
-- Use this on a live store
+The Tools, Resources and Prompts tabs open only while MCP is on.
 
-With JWT authentication off:
-- Anyone who knows the endpoint can call the tools without a token
-- The tools still only read, and they still skip customers and orders
-- Fine for local development, or for a public assistant that only needs the catalogue
+## Access
+While MCP is on, the endpoint is public, like the WooCommerce Store API:
+
+- No token or login is needed, and the plugin never signs in as a WordPress user
+- Every tool only reads; nothing can be created, changed or deleted
+- It returns only storefront data: published products, variations, categories, tags, brands, attributes, approved reviews, shipping and tax rates, the payment methods offered at checkout, and published posts and pages
+- It never returns orders, customers, users, e-mail addresses, store settings, or draft, private or password-protected content
+
+## Stopping Access
+- Switch **Enable MCP functionality** off to close the endpoints
+- Switch individual tools off on the **Tools** tab to hide them from the assistant

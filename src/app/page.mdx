@@ -5,13 +5,13 @@ import { HeroPattern } from '@/components/HeroPattern'
 export const metadata = {
   title: { absolute: 'WooCommerce MCP Server for Claude – Free Plugin' },
   description:
-    'Free WordPress plugin that turns WooCommerce into an MCP server: Claude, Cursor and other AI clients get 33 read-only tools for your store data.',
+    'Free WordPress plugin that turns WooCommerce into an MCP server: Claude, Cursor and other AI clients get 31 read-only tools for your store data.',
   alternates: {
     canonical: '/',
   },
   openGraph: {
     title: 'WooCommerce MCP Server for Claude – Free Plugin',
-    description: 'Free WordPress plugin that turns WooCommerce into an MCP server: Claude, Cursor and other AI clients get 33 read-only tools for your store data.',
+    description: 'Free WordPress plugin that turns WooCommerce into an MCP server: Claude, Cursor and other AI clients get 31 read-only tools for your store data.',
     url: '/',
     images: [
       { url: '/opengraph-image', width: 1200, height: 630 },
@@ -35,12 +35,12 @@ export const faqSchema = {
     {
       '@type': 'Question',
       name: 'Is MCP for WooCommerce secure? What data can AI access?',
-      acceptedAnswer: { '@type': 'Answer', text: "The tools the plugin loads cover products, variations, categories, tags, attributes, reviews, shipping zones and methods, tax classes and rates, payment gateways, WooCommerce system status, and WordPress posts and pages. None of them writes. The code also contains tools for orders, customers and sales reports, but the plugin does not load them. One optional tool, off by default, can send read-only GET requests to your site's REST API; if you switch it on, the assistant can read whatever the token's user can read, so keep it off for administrator tokens." },
+      acceptedAnswer: { '@type': 'Answer', text: "The MCP endpoint is public while MCP is switched on, like the WooCommerce Store API, and every tool only reads. It returns what a shop visitor can already see: published products and their variations, categories, tags, brands, attributes, approved reviews (reviewer name only), shipping zones and methods with their cost, tax classes and rates, the payment methods offered at checkout, and published posts and pages. It never returns orders, customers, users, e-mail addresses, store settings, or draft, private or password-protected content. There is no login and no token: the plugin never signs in as a WordPress user. To stop access, switch MCP off or switch individual tools off." },
     },
     {
       '@type': 'Question',
       name: 'How do I install and configure MCP for WooCommerce?',
-      acceptedAnswer: { '@type': 'Answer', text: 'Download the ZIP from GitHub, upload it under Plugins → Add Plugin → Upload Plugin and activate it. Then switch MCP on under Settings → MCP for WooCommerce, create a JWT token and add the site to your AI client. The installation guide goes through each step.' },
+      acceptedAnswer: { '@type': 'Answer', text: 'Download the ZIP from GitHub, upload it under Plugins → Add Plugin → Upload Plugin and activate it. Then switch MCP on under Settings → MCP for WooCommerce and add your MCP endpoint URL to your AI client. No token or login is needed. The installation guide goes through each step.' },
     },
     {
       '@type': 'Question',
@@ -66,13 +66,13 @@ export const sections = [
 
 # MCP for WooCommerce
 
-**MCP for WooCommerce** is a free WordPress plugin that lets an AI assistant such as Claude read your WooCommerce store through the Model Context Protocol (MCP). The assistant can look up products, variations, categories, reviews, shipping, taxes and payment methods. It cannot change anything, and the tools it gets do not reach customers or orders.
+**MCP for WooCommerce** is a free WordPress plugin that lets an AI assistant such as Claude read your WooCommerce store through the Model Context Protocol (MCP). The assistant can look up products, variations, categories, reviews, shipping, taxes and payment methods. It cannot change anything, and it only sees what a shop visitor can already see: no customers, orders or settings.
 
 ## What MCP for WooCommerce does {{ anchor: false }}
 
-- Gives an assistant 33 tools, all of them read-only: 29 for WooCommerce data and 4 for WordPress posts and pages.
+- Gives an assistant 31 tools, all of them read-only: 27 for WooCommerce data and 4 for WordPress posts and pages.
 - Works with Claude Desktop, Claude Code, Cursor, VS Code and any other client that speaks MCP.
-- Connects over HTTP with a JWT token, or through a small local proxy for clients that only run MCP servers as a process.
+- Connects over Streamable HTTP to a public, read-only endpoint on your site, with no token or login.
 - Takes about five minutes to install and connect.
 - Is a fork of Automattic's wordpress-mcp, licensed GPL-2.0-or-later.
 
@@ -87,7 +87,7 @@ export const sections = [
 
 ## Getting started {{ anchor: false }}
 
-Install the plugin, switch MCP on in its settings, create a token and add your site to the AI client you use. From then on the assistant can answer questions about your catalogue and your store settings, and it reads them live, so the answers follow your prices and stock. {{ className: 'lead' }}
+Install the plugin, switch MCP on in its settings and add your endpoint URL to the AI client you use. From then on the assistant can answer questions about your catalogue and your shipping, tax and payment options, and it reads them live, so the answers follow your prices and stock. {{ className: 'lead' }}
 
 <div className="not-prose">
   <Button href="/setup" variant="text" arrow="right">
@@ -130,7 +130,7 @@ Building a store from a design made in Lovable or plain HTML? [html2wp](https://
     </summary>
     <div className="p-6 pt-0 text-zinc-600 dark:text-zinc-400">
       <br/>
-      The tools the plugin loads cover products, variations, categories, tags, attributes, reviews, shipping zones and methods, tax classes and rates, payment gateways, WooCommerce system status, and WordPress posts and pages. None of them writes. The code also contains tools for orders, customers and sales reports, but the plugin does not load them. One optional tool, off by default, can send read-only GET requests to your site's REST API; if you switch it on, the assistant can read whatever the token's user can read, so keep it off for administrator tokens.
+      The MCP endpoint is public while MCP is switched on, like the WooCommerce Store API, and every tool only reads. It returns what a shop visitor can already see: published products and their variations, categories, tags, brands, attributes, approved reviews (reviewer name only), shipping zones and methods with their cost, tax classes and rates, the payment methods offered at checkout, and published posts and pages. It never returns orders, customers, users, e-mail addresses, store settings, or draft, private or password-protected content. There is no login and no token: the plugin never signs in as a WordPress user. To stop access, switch MCP off or switch individual tools off.
     </div>
   </details>
 
@@ -143,7 +143,7 @@ Building a store from a design made in Lovable or plain HTML? [html2wp](https://
     </summary>
     <div className="p-6 pt-0 text-zinc-600 dark:text-zinc-400">
       <br/>
-      Download the ZIP from GitHub, upload it under Plugins → Add Plugin → Upload Plugin and activate it. Then switch MCP on under Settings → MCP for WooCommerce, create a JWT token and add the site to your AI client. The <a href="/installation" className="text-purple-600 hover:text-purple-700 dark:text-purple-400">installation guide</a> goes through each step.
+      Download the ZIP from GitHub, upload it under Plugins → Add Plugin → Upload Plugin and activate it. Then switch MCP on under Settings → MCP for WooCommerce and add your MCP endpoint URL to your AI client. No token or login is needed. The <a href="/installation" className="text-purple-600 hover:text-purple-700 dark:text-purple-400">installation guide</a> goes through each step.
     </div>
   </details>
 

@@ -1,8 +1,8 @@
 # MCP for WooCommerce
 
-> Free, open-source WordPress plugin (GPL-2.0-or-later) that turns a WooCommerce store into an MCP (Model Context Protocol) server. AI clients such as Claude Desktop, Claude Code, Cursor and VS Code get 33 read-only tools: 29 for WooCommerce data (products, variations, categories, tags, attributes, reviews, shipping, taxes, payment gateways, system status) and 4 for WordPress posts and pages. No tool creates, edits or deletes anything, and the loaded tools do not reach customers or orders.
+> Free, open-source WordPress plugin (GPL-2.0-or-later) that turns a WooCommerce store into an MCP (Model Context Protocol) server. AI clients such as Claude Desktop, Claude Code, Cursor and VS Code get 31 read-only tools: 27 for WooCommerce data (products, variations, categories, tags, brands, attributes, approved reviews, shipping, taxes, payment methods) and 4 for WordPress posts and pages. No tool creates, edits or deletes anything. Only storefront data a shop visitor can already see is returned; never orders, customers, users, e-mail addresses, settings, or draft, private or password-protected content.
 
-- Connection: Streamable HTTP at `/wp-json/wp/v2/wpmcp/streamable` with a JWT token (required by default), or STDIO through a small local proxy.
+- Connection: Streamable HTTP (JSON-RPC 2.0) at `/wp-json/wp/v2/wpmcp/streamable`. The endpoint is public and read-only while MCP is switched on; no token or login, and the plugin never signs in as a WordPress user.
 - Requirements: WordPress 6.4+, PHP 8.0+, WooCommerce active.
 - Source and releases: https://github.com/iOSDevSK/mcp-for-woocommerce
 - It is a fork of Automattic's wordpress-mcp, cut down to what a shop needs.
@@ -16,12 +16,11 @@
 
 ## Configuration
 
-- [Settings](https://mcpforwoocommerce.com/settings/): enable MCP, require JWT authentication, switch tools on or off
-- [Authentication tokens](https://mcpforwoocommerce.com/authentication-tokens/): create and revoke the JWT tokens MCP clients use
+- [Settings](https://mcpforwoocommerce.com/settings/): enable MCP, copy the public read-only endpoint URL, switch tools on or off
 
 ## Reference
 
-- [Tools](https://mcpforwoocommerce.com/tools/): all 33 read-only tools and what each returns
+- [Tools](https://mcpforwoocommerce.com/tools/): all 31 read-only tools and what each returns
 - [Resources](https://mcpforwoocommerce.com/resources/): the search guide resource
 - [Prompts](https://mcpforwoocommerce.com/prompts/): no ready-made prompts yet, and what to ask instead
 - [MCP protocol](https://mcpforwoocommerce.com/mcp-protocol/): how the Model Context Protocol works

@@ -15,7 +15,7 @@ const resources = [
     href: '/tools',
     name: 'Available Tools',
     description:
-      'The 33 read-only tools an assistant can call.',
+      'The 31 read-only tools an assistant can call.',
     icon: CogIcon,
     pattern: {
       y: 16,

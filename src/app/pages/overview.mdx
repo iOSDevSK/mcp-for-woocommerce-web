@@ -9,17 +9,16 @@
 - Product search that works for any kind of catalogue
 - Full product details, each with a link to the product page
 - Variations such as colours and sizes
-- Categories, tags, attributes and attribute terms
-- Customer reviews and ratings
+- Categories, tags, brands, attributes and attribute terms
+- Approved customer reviews and ratings
 
-### Store settings (read-only)
-- Shipping zones, methods and the locations they cover
+### Shipping, taxes and payments (read-only)
+- Shipping zones, enabled methods with their cost, and the locations they cover
 - Tax classes and rates
-- Payment gateways
-- WooCommerce system status
+- The payment methods offered at checkout
 
 ### WordPress content (read-only)
-- Posts and pages, listed with filters and search or opened by ID
+- Published posts and pages, listed with filters and search or opened by ID
 
 ### Search helpers
 - An intelligent search that tries broader queries when the first one finds nothing
@@ -28,18 +27,17 @@
 - A permalink with every product and variation, so the assistant can link to it
 
 ## Architecture
-The plugin offers two transports:
-- **STDIO**, for clients that start an MCP server as a local process. They reach your site through a small proxy.
-- **Streamable HTTP**, which a client calls directly at `/wp-json/wp/v2/wpmcp/streamable`.
+The plugin is an MCP server inside WordPress. A client calls it directly over Streamable HTTP (JSON-RPC 2.0) at `/wp-json/wp/v2/wpmcp/streamable`; a WordPress REST-style endpoint at `/wp-json/wp/v2/wpmcp` is also available. Neither needs a token.
 
 ## Security Features
-- JWT authentication, required by default
-- A switch for every tool, so the assistant only sees the ones you leave on
+- The endpoint returns only what a shop visitor can already see; never orders, customers, users, e-mail addresses or settings
+- No login: the plugin never signs in as a WordPress user
 - No tool that creates, edits or deletes anything
+- A switch for every tool, and a master switch that turns MCP off
 
 ## Getting Started
 1. Install the plugin on your WordPress/WooCommerce site
-2. Switch MCP on and check the authentication settings
+2. Switch MCP on and copy the endpoint URL from the Access card
 3. Leave on the tools you want the assistant to use
 4. Connect Claude, [Webtalkbot](https://webtalkbot.com) or another MCP client
 

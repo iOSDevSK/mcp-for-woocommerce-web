@@ -10,7 +10,7 @@ const sections = [
         slug: "overview",
         title: "Overview",
         seoTitle: "WooCommerce MCP Server: Features and the Data It Reads",
-        description: "What the plugin does: 33 read-only tools that let Claude and other MCP clients read your products, reviews, shipping, taxes and payment methods."
+        description: "What the plugin does: 31 read-only tools that let Claude and other MCP clients read your products, reviews, shipping, taxes and payment methods."
       },
       {
         slug: "installation",
@@ -22,7 +22,7 @@ const sections = [
         slug: "setup",
         title: "Setup",
         seoTitle: "Connect WooCommerce to Claude Code, Claude Desktop & Cursor",
-        description: "Connect your WooCommerce store to Claude Code, Claude Desktop, Cursor or VS Code: plugin settings, a JWT token and a ready configuration for each client."
+        description: "Connect your WooCommerce store to Claude Code, Claude Desktop, Cursor or VS Code: the endpoint URL and a ready configuration for each client. No token or login needed."
       },
       {
         slug: "woocommerce-ai-assistant",
@@ -45,8 +45,8 @@ const sections = [
       {
         slug: "tools",
         title: "Tools",
-        seoTitle: "WooCommerce MCP Tools: All 33 Read-Only Tools",
-        description: "All 33 MCP for WooCommerce tools: product search, variations, categories, reviews, shipping, taxes and payment data. Every tool is read-only."
+        seoTitle: "WooCommerce MCP Tools: All 31 Read-Only Tools",
+        description: "All 31 MCP for WooCommerce tools: product search, variations, categories, reviews, shipping, taxes and payment data. Every tool is read-only."
       },
       {
         slug: "resources",
@@ -58,7 +58,7 @@ const sections = [
         slug: "prompts",
         title: "Prompts",
         seoTitle: "WooCommerce MCP Prompts: What to Ask Instead",
-        description: "MCP for WooCommerce ships no ready-made prompts yet. What to ask the assistant instead, using the plugin's 33 read-only tools."
+        description: "MCP for WooCommerce ships no ready-made prompts yet. What to ask the assistant instead, using the plugin's 31 read-only tools."
       }
     ]
   }

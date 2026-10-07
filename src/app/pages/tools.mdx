@@ -1,6 +1,6 @@
 import { ToolsTable } from '@/components/ToolsTable'
 
-The plugin gives an AI assistant 33 tools. All of them only read: 29 cover WooCommerce data and 4 cover WordPress posts and pages. The table lists every one of them.
+The plugin gives an AI assistant 31 tools. All of them only read: 27 cover WooCommerce data and 4 cover WordPress posts and pages. The table lists every one of them.
 
 <ToolsTable />
 
@@ -17,9 +17,9 @@ The **Tools** tab in the plugin settings has a switch next to each tool. A switc
 
 ## What the Tools Can and Cannot Reach
 
-- They read products, variations, categories, tags, attributes, reviews, shipping, taxes, payment gateways, system status, and WordPress posts and pages
+- They read what a shop visitor can already see: published, catalog-visible products and their variations, categories, tags, brands, attributes, approved reviews (reviewer name only), shipping zones and enabled methods with their cost, tax classes and rates, the payment methods offered at checkout, and published posts and pages that are not password-protected
 - They cannot create, edit or delete anything
-- None of them returns customers, orders or sales figures. The codebase has tools for those, but the plugin does not load them.
+- None of them returns orders, customers, users, e-mail addresses, store settings, or draft, private or password-protected content
 
 ## Best Practices
 
@@ -56,7 +56,6 @@ The **Tools** tab in the plugin settings has a switch next to each tool. A switc
 1. Shipping: **wc_get_shipping_zones** and **wc_get_shipping_methods**
 2. Payments: **wc_get_payment_gateways**
 3. Taxes: **wc_get_tax_classes** and **wc_get_tax_rates**
-4. System: **wc_get_system_status**
 
 ## Tools by Group
 
@@ -68,9 +67,8 @@ The **Tools** tab in the plugin settings has a switch next to each tool. A switc
 - **Shipping**: 4 tools
 - **Taxes**: 2 tools
 - **Payment gateways**: 2 tools
-- **System status**: 2 tools
 - **WordPress posts and pages**: 4 tools
 
-**33 tools in total**, all read-only.
+**31 tools in total**, all read-only.
 
 Next: [Resources →](/resources)

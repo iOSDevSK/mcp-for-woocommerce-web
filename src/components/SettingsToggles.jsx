@@ -14,6 +14,16 @@ export function SettingsToggles() {
         />
       </div>
 
+      <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6 my-6">
+        <h4 className="text-sm font-medium text-gray-900 dark:text-white">Access</h4>
+        <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+          The MCP endpoint is public. It returns only information that shop visitors can already see, and it cannot create, change or delete anything. It never signs in as a WordPress user.
+        </p>
+        <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
+          MCP endpoint: <code className="break-all">https://your-site.com/wp-json/wp/v2/wpmcp/streamable</code>
+        </p>
+      </div>
+
       <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 my-6">
         <div className="flex">
           <div className="flex-shrink-0">
@@ -26,19 +36,10 @@ export function SettingsToggles() {
               Note for Webtalkbot users:
             </h4>
             <div className="mt-2 text-sm text-blue-700 dark:text-blue-400">
-              JWT Authentication is recommended if you want to create a WooCommerce AI Agent in <a href="https://webtalkbot.com" target="_blank" rel="noopener noreferrer" className="underline font-medium">Webtalkbot</a>.
+              To build a WooCommerce AI Agent in <a href="https://webtalkbot.com" target="_blank" rel="noopener noreferrer" className="underline font-medium">Webtalkbot</a>, give it the MCP endpoint URL shown above. No token is needed.
             </div>
           </div>
         </div>
-      </div>
-
-      <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 p-6 my-6">
-        <ToggleSwitch
-          enabled={true}
-          label="Require JWT Authentication"
-          description="When on, every MCP request needs a valid JWT token. When off, anyone who knows the endpoint can call the tools; they still only read."
-          onChange={(enabled) => console.log('JWT Authentication:', enabled)}
-        />
       </div>
     </>
   )

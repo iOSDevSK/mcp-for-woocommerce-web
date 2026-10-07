@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-10-07
+
+- Content updated for MCP for WooCommerce 1.3.0: the MCP endpoint is public and read-only, JWT/OAuth authentication was removed
+- Removed the Authentication Tokens page (301 to `/settings/` in `nginx.conf`), the token generator and token table components
+- Setup, settings, installation, overview, tools and AI assistant pages rewritten for token-free client configuration
+- Tool counts updated to 31 (27 WooCommerce + 4 WordPress); system status tools removed from the tools table
+- `llms.txt`, meta descriptions and JSON-LD (`softwareVersion` 1.3.0) updated
+
 ## 2025-07-29
 
 - Update to React 19 and Next.js 15.4

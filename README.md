@@ -29,26 +29,32 @@ npm run build
 
 ## 🌐 Deployment
 
-After running the build script, the `out/` directory contains all static files ready for deployment to:
+Production is `https://mcpforwoocommerce.com`: the static `out/` directory is served by an
+nginx container on the `agency` server, behind Traefik and Cloudflare.
 
-- **GitHub Pages**
-- **Netlify**
-- **Vercel**
-- **Any static hosting service**
+```bash
+ssh agency
+cd ~/sites/mcpforwoocommerce
+git pull
+# node is not installed on the host — build in a container
+sudo docker run --rm -v "$PWD":/app -w /app node:20 sh -c "npm ci && npm run build"
+# required: `next build` recreates out/, which detaches the bind mount
+sudo docker compose up -d --force-recreate
+sudo docker exec mcpforwoocommerce-com ls /usr/share/nginx/html
+```
 
-### Deploy to GitHub Pages
-1. Build the project: `./build.sh`
-2. Push the `out/` directory to your gh-pages branch
-3. Enable GitHub Pages in repository settings
+`nginx.conf` is mounted into the container, so redirects added there need the same
+recreate. See `CLAUDE.md` for caching and PageSpeed notes.
 
-### Deploy to Netlify
-1. Build the project: `./build.sh`
-2. Drag and drop the `out/` folder to Netlify
-3. Or connect your repository and set build command to `npm run build`
+The Changelog page is generated at build time from the plugin's `changelog.txt` on
+GitHub, so rebuild the site after each plugin release.
 
-### Deploy to Vercel
-1. Connect your repository to Vercel
-2. Vercel will automatically detect Next.js and build
+## 🔌 Plugin version covered
+
+The content describes **MCP for WooCommerce 1.3.0**: a public, read-only MCP endpoint
+that serves storefront data only, with 31 tools and no authentication (JWT and OAuth
+were removed in 1.3.0). Update the pages, `public/llms.txt` and the tool counts in
+`src/app/layout.jsx` whenever a plugin release changes tools or behaviour.
 
 ## 📝 Content Management
 

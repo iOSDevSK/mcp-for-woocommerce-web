@@ -209,7 +209,6 @@ export const navigation = [
     title: 'Configuration',
     links: [
       { title: 'Settings', href: '/settings' },
-      { title: 'Authentication Tokens', href: '/authentication-tokens' },
     ],
   },
   {

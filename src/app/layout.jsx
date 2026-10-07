@@ -11,7 +11,7 @@ export const metadata = {
     template: '%s | MCP for WooCommerce',
     default: 'WooCommerce MCP Server for Claude – Free Plugin',
   },
-  description: 'Free WordPress plugin that turns WooCommerce into an MCP server: Claude, Cursor and other AI clients get 33 read-only tools for your store data.',
+  description: 'Free WordPress plugin that turns WooCommerce into an MCP server: Claude, Cursor and other AI clients get 31 read-only tools for your store data.',
   keywords: 'WooCommerce MCP, WooCommerce MCP server, MCP for WooCommerce, WooCommerce Claude, WooCommerce AI chatbot, Model Context Protocol, WordPress plugin',
   authors: [{ name: 'MCP for WooCommerce Team' }],
   creator: 'MCP for WooCommerce',
@@ -32,7 +32,7 @@ export const metadata = {
     type: 'website',
     locale: 'en_US',
     title: 'WooCommerce MCP Server for Claude – Free Plugin',
-    description: 'Free WordPress plugin that turns WooCommerce into an MCP server: Claude, Cursor and other AI clients get 33 read-only tools for your store data.',
+    description: 'Free WordPress plugin that turns WooCommerce into an MCP server: Claude, Cursor and other AI clients get 31 read-only tools for your store data.',
     siteName: 'MCP for WooCommerce Documentation',
     url: 'https://mcpforwoocommerce.com/',
     images: [
@@ -42,7 +42,7 @@ export const metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'WooCommerce MCP Server for Claude – Free Plugin',
-    description: 'Free WordPress plugin that turns WooCommerce into an MCP server: Claude, Cursor and other AI clients get 33 read-only tools for your store data.',
+    description: 'Free WordPress plugin that turns WooCommerce into an MCP server: Claude, Cursor and other AI clients get 31 read-only tools for your store data.',
     images: ['https://mcpforwoocommerce.com/opengraph-image'],
   },
 }
@@ -62,11 +62,11 @@ export default async function RootLayout({ children }) {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
     name: 'MCP for WooCommerce',
-    description: 'A free WordPress plugin that turns a WooCommerce store into an MCP server, so AI assistants such as Claude can read products, variations, categories, reviews, shipping, taxes and payment methods. All 33 tools are read-only.',
+    description: 'A free WordPress plugin that turns a WooCommerce store into an MCP server, so AI assistants such as Claude can read products, variations, categories, reviews, shipping, taxes and payment methods. All 31 tools are read-only.',
     url: 'https://mcpforwoocommerce.com',
     applicationCategory: 'BusinessApplication',
     operatingSystem: 'WordPress',
-    softwareVersion: '1.2.4',
+    softwareVersion: '1.3.0',
     license: 'https://www.gnu.org/licenses/gpl-2.0.html',
     author: {
       '@type': 'Organization',
