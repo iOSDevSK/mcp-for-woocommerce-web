@@ -99,7 +99,7 @@ export const Header = forwardRef(function Header({ className, ...props }, ref) {
                 <MenuItem>
                   {({ active }) => (
                     <a
-                      href="https://github.com/iOSDevSK/mcp-for-woocommerce/releases"
+                      href="https://wordpress.org/plugins/mcp-for-woocommerce/"
                       target="_blank"
                       rel="noopener noreferrer"
                       className={`block px-4 py-2.5 text-sm font-medium transition-colors ${

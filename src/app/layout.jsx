@@ -77,7 +77,7 @@ export default async function RootLayout({ children }) {
       '@type': 'Organization',
       name: 'MCP for WooCommerce Team'
     },
-    downloadUrl: 'https://github.com/iOSDevSK/mcp-for-woocommerce',
+    downloadUrl: 'https://wordpress.org/plugins/mcp-for-woocommerce/',
     offers: {
       '@type': 'Offer',
       price: '0',

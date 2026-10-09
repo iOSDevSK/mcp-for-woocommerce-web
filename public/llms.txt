@@ -4,7 +4,8 @@
 
 - Connection: Streamable HTTP (JSON-RPC 2.0) at `/wp-json/wp/v2/wpmcp/streamable`. The endpoint is public and read-only while MCP is switched on; no token or login, and the plugin never signs in as a WordPress user.
 - Requirements: WordPress 6.4+, PHP 8.0+, WooCommerce active.
-- Source and releases: https://github.com/iOSDevSK/mcp-for-woocommerce
+- Download: https://wordpress.org/plugins/mcp-for-woocommerce/
+- Source code: https://github.com/iOSDevSK/mcp-for-woocommerce
 - It is a fork of Automattic's wordpress-mcp, cut down to what a shop needs.
 
 ## Getting started
